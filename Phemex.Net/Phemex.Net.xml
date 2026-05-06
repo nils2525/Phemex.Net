@@ -1,0 +1,1439 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Phemex.Net</name>
+    </assembly>
+    <members>
+        <member name="T:Phemex.Net.Clients.PhemexRestClient">
+            <inheritdoc cref="T:Phemex.Net.Interfaces.Clients.IPhemexRestClient" />
+        </member>
+        <member name="P:Phemex.Net.Clients.PhemexRestClient.SpotApi">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.PhemexRestClient.#ctor(System.Action{Phemex.Net.Objects.Options.PhemexRestOptions})">
+            <summary>
+            Create a new instance of the PhemexRestClient using provided options
+            </summary>
+            <param name="optionsDelegate">Option configuration delegate</param>
+        </member>
+        <member name="M:Phemex.Net.Clients.PhemexRestClient.#ctor(System.Net.Http.HttpClient,Microsoft.Extensions.Logging.ILoggerFactory,Microsoft.Extensions.Options.IOptions{Phemex.Net.Objects.Options.PhemexRestOptions})">
+            <summary>
+            Create a new instance of the PhemexRestClient using provided options
+            </summary>
+            <param name="httpClient">Http client for this client</param>
+            <param name="loggerFactory">The logger factory</param>
+            <param name="options">Option configuration</param>
+        </member>
+        <member name="M:Phemex.Net.Clients.PhemexRestClient.SetDefaultOptions(System.Action{Phemex.Net.Objects.Options.PhemexRestOptions})">
+            <summary>
+            Set the default options to be used when creating new clients
+            </summary>
+            <param name="optionsDelegate">Option configuration delegate</param>
+        </member>
+        <member name="T:Phemex.Net.Clients.PhemexSocketClient">
+            <inheritdoc cref="T:Phemex.Net.Interfaces.Clients.IPhemexSocketClient" />
+        </member>
+        <member name="P:Phemex.Net.Clients.PhemexSocketClient.SpotApi">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.PhemexSocketClient.#ctor(System.Action{Phemex.Net.Objects.Options.PhemexSocketOptions})">
+            <summary>
+            Create a new instance of PhemexSocketClient
+            </summary>
+            <param name="optionsDelegate">Option configuration delegate</param>
+        </member>
+        <member name="M:Phemex.Net.Clients.PhemexSocketClient.#ctor(Microsoft.Extensions.Options.IOptions{Phemex.Net.Objects.Options.PhemexSocketOptions},Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Create a new instance of PhemexSocketClient
+            </summary>
+            <param name="options">Option configuration</param>
+            <param name="loggerFactory">The logger factory</param>
+        </member>
+        <member name="M:Phemex.Net.Clients.PhemexSocketClient.SetDefaultOptions(System.Action{Phemex.Net.Objects.Options.PhemexSocketOptions})">
+            <summary>
+            Set the default options to be used when creating new clients
+            </summary>
+            <param name="optionsDelegate">Option configuration delegate</param>
+        </member>
+        <member name="T:Phemex.Net.Clients.PhemexUserClientProvider">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.PhemexUserClientProvider.#ctor(System.Action{Phemex.Net.Objects.Options.PhemexOptions})">
+            <summary>
+            ctor
+            </summary>
+            <param name="optionsDelegate">Options to use for created clients</param>
+        </member>
+        <member name="M:Phemex.Net.Clients.PhemexUserClientProvider.#ctor(System.Net.Http.HttpClient,Microsoft.Extensions.Logging.ILoggerFactory,Microsoft.Extensions.Options.IOptions{Phemex.Net.Objects.Options.PhemexRestOptions},Microsoft.Extensions.Options.IOptions{Phemex.Net.Objects.Options.PhemexSocketOptions})">
+            <summary>
+            ctor
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.Clients.PhemexUserClientProvider.InitializeUserClient(System.String,Phemex.Net.PhemexCredentials,Phemex.Net.PhemexEnvironment)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.PhemexUserClientProvider.ClearUserClients(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.PhemexUserClientProvider.GetRestClient(System.String,Phemex.Net.PhemexCredentials,Phemex.Net.PhemexEnvironment)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.PhemexUserClientProvider.GetSocketClient(System.String,Phemex.Net.PhemexCredentials,Phemex.Net.PhemexEnvironment)">
+            <inheritdoc />
+        </member>
+        <member name="T:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApi">
+            <inheritdoc cref="T:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApi" />
+        </member>
+        <member name="P:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApi.ClientOptions">
+            <inheritdoc />
+        </member>
+        <member name="P:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApi.MessageHandler">
+            <inheritdoc />
+        </member>
+        <member name="P:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApi.ExchangeData">
+            <inheritdoc />
+        </member>
+        <member name="P:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApi.ExchangeName">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApi.CreateSerializer">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApi.CreateAuthenticationProvider(Phemex.Net.PhemexCredentials)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApi.GetServerTimestampAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApi.FormatSymbol(System.String,System.String,CryptoExchange.Net.SharedApis.TradingMode,System.Nullable{System.DateTime})">
+            <inheritdoc />
+        </member>
+        <member name="T:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiExchangeData">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiExchangeData.GetProductsAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiExchangeData.GetProductsPlusAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiExchangeData.GetServerTimeAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiExchangeData.GetTickersAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiExchangeData.GetTickerAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiExchangeData.GetOrderBookAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiExchangeData.GetFullOrderBookAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiExchangeData.GetRecentTradesAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Phemex.Net.Clients.SpotApi.PhemexSocketClientSpotApi">
+            <summary>
+            Client providing access to the Phemex Spot websocket Api
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexSocketClientSpotApi.CreateSerializer">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexSocketClientSpotApi.CreateMessageConverter(System.Net.WebSockets.WebSocketMessageType)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexSocketClientSpotApi.FormatSymbol(System.String,System.String,CryptoExchange.Net.SharedApis.TradingMode,System.Nullable{System.DateTime})">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexSocketClientSpotApi.CreateAuthenticationProvider(Phemex.Net.PhemexCredentials)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexSocketClientSpotApi.SubscribeToTradeUpdatesAsync(System.String,System.Action{CryptoExchange.Net.Objects.Sockets.DataEvent{Phemex.Net.Objects.Models.PhemexTradeUpdate}},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexSocketClientSpotApi.SubscribeToTickerUpdatesAsync(System.Action{CryptoExchange.Net.Objects.Sockets.DataEvent{Phemex.Net.Objects.Models.PhemexSpotTickerUpdate}},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.Decimal">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.NullableDecimal">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexCurrencyStatus">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.NullablePhemexCurrencyStatus">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexOrderSide">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexProductStatus">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexProductType">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexUpdateType">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexDataResultPhemexProductData">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexDataResultPhemexServerTime">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexMarketResultPhemexOrderBook">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexMarketResultPhemexTickerArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexMarketResultPhemexTicker">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexMarketResultPhemexTradeUpdate">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexBook">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexCurrency">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexCurrencyArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexOrderBook">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexOrderBookEntry">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexOrderBookEntryArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexProduct">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexProductArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexProductData">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexServerTime">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexSpotTickerUpdate">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexTicker">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexTickerArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexTrade">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexTradeArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexTradeUpdate">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexSocketRequest">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexSocketResponse">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.DateTime">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.NullableDateTime">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.JsonElement">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.NullableJsonElement">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.Int32">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.NullableInt32">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.Int64">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.NullableInt64">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.Object">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.ObjectArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.String">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.StringArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.Default">
+            <summary>
+            The default <see cref="T:System.Text.Json.Serialization.JsonSerializerContext"/> associated with a default <see cref="T:System.Text.Json.JsonSerializerOptions"/> instance.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.GeneratedSerializerOptions">
+            <summary>
+            The source-generated options associated with this context.
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.Converters.PhemexSourceGenerationContext.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:Phemex.Net.Converters.PhemexSourceGenerationContext.#ctor(System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Phemex.Net.Converters.PhemexSourceGenerationContext.GetTypeInfo(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Phemex.Net.Enums.PhemexCurrencyStatus">
+            <summary>
+            Currency status
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexCurrencyStatus.Listed">
+            <summary>
+            ["<c>Listed</c>"] Listed
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexCurrencyStatus.Active">
+            <summary>
+            ["<c>Active</c>"] Active
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexCurrencyStatus.Delisted">
+            <summary>
+            ["<c>Delisted</c>"] Delisted
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexCurrencyStatus.Suspended">
+            <summary>
+            ["<c>Suspend</c>"] Suspended
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Enums.PhemexOrderSide">
+            <summary>
+            Order side
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexOrderSide.Buy">
+            <summary>
+            ["<c>Buy</c>"] Buy
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexOrderSide.Sell">
+            <summary>
+            ["<c>Sell</c>"] Sell
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Enums.PhemexProductStatus">
+            <summary>
+            Product status
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexProductStatus.Listed">
+            <summary>
+            ["<c>Listed</c>"] Listed
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexProductStatus.Delisted">
+            <summary>
+            ["<c>Delisted</c>"] Delisted
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Enums.PhemexProductType">
+            <summary>
+            Product type
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexProductType.Perpetual">
+            <summary>
+            ["<c>Perpetual</c>"] Perpetual
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexProductType.Spot">
+            <summary>
+            ["<c>Spot</c>"] Spot
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Enums.PhemexUpdateType">
+            <summary>
+            Update type
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexUpdateType.Snapshot">
+            <summary>
+            ["<c>snapshot</c>"] Snapshot
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexUpdateType.Incremental">
+            <summary>
+            ["<c>incremental</c>"] Incremental
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Interfaces.Clients.IPhemexRestClient">
+            <summary>
+            Client for accessing the Phemex Rest API.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Interfaces.Clients.IPhemexRestClient.SpotApi">
+            <summary>
+            Spot API endpoints
+            </summary>
+            <see cref="T:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApi"/>
+        </member>
+        <member name="T:Phemex.Net.Interfaces.Clients.IPhemexSocketClient">
+            <summary>
+            Client for accessing the Phemex websocket API
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Interfaces.Clients.IPhemexSocketClient.SpotApi">
+            <summary>
+            Spot API endpoints
+            </summary>
+            <see cref="T:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexSocketClientSpotApi"/>
+        </member>
+        <member name="T:Phemex.Net.Interfaces.Clients.IPhemexUserClientProvider">
+            <summary>
+            Provider for clients with credentials for specific users
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.IPhemexUserClientProvider.InitializeUserClient(System.String,Phemex.Net.PhemexCredentials,Phemex.Net.PhemexEnvironment)">
+            <summary>
+            Initialize a client for the specified user identifier. This can be used so to initialize a client for a user so credentials do not need to be passed later.
+            </summary>
+            <param name="userIdentifier">The identifier for the user</param>
+            <param name="credentials">The credentials for the user</param>
+            <param name="environment">The environment to use</param>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.IPhemexUserClientProvider.ClearUserClients(System.String)">
+            <summary>
+            Reset the cached clients for a user. This can be useful when a user changes API credentials.
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.IPhemexUserClientProvider.GetRestClient(System.String,Phemex.Net.PhemexCredentials,Phemex.Net.PhemexEnvironment)">
+            <summary>
+            Get the Rest client for a specific user. In case the client does not exist yet it will be created and the <paramref name="credentials"/> should be provided, unless <see cref="M:Phemex.Net.Interfaces.Clients.IPhemexUserClientProvider.InitializeUserClient(System.String,Phemex.Net.PhemexCredentials,Phemex.Net.PhemexEnvironment)" /> has been called prior for this user.
+            </summary>
+            <param name="userIdentifier">The identifier for user</param>
+            <param name="credentials">The credentials for the user. Required the first time a client is requested for this user unless <see cref="M:Phemex.Net.Interfaces.Clients.IPhemexUserClientProvider.InitializeUserClient(System.String,Phemex.Net.PhemexCredentials,Phemex.Net.PhemexEnvironment)" /> has been called prior for this user.</param>
+            <param name="environment">The environment to use</param>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.IPhemexUserClientProvider.GetSocketClient(System.String,Phemex.Net.PhemexCredentials,Phemex.Net.PhemexEnvironment)">
+            <summary>
+            Get the Socket client for a specific user. In case the client does not exist yet it will be created and the <paramref name="credentials"/> should be provided, unless <see cref="M:Phemex.Net.Interfaces.Clients.IPhemexUserClientProvider.InitializeUserClient(System.String,Phemex.Net.PhemexCredentials,Phemex.Net.PhemexEnvironment)" /> has been called prior for this user.
+            </summary>
+            <param name="userIdentifier">The identifier for user</param>
+            <param name="credentials">The credentials for the user. Required the first time a client is requested for this user unless <see cref="M:Phemex.Net.Interfaces.Clients.IPhemexUserClientProvider.InitializeUserClient(System.String,Phemex.Net.PhemexCredentials,Phemex.Net.PhemexEnvironment)" /> has been called prior for this user.</param>
+            <param name="environment">The environment to use</param>
+        </member>
+        <member name="T:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApi">
+            <summary>
+            Phemex Spot API endpoints
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApi.ExchangeData">
+            <summary>
+            Endpoints related to retrieving market and system data
+            </summary>
+            <see cref="T:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiExchangeData" />
+        </member>
+        <member name="T:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiExchangeData">
+            <summary>
+            Phemex Spot exchange data endpoints. Exchange data includes market data and system status.
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiExchangeData.GetProductsAsync(System.Threading.CancellationToken)">
+            <summary>
+            Get product and currency information
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-product-information-3" /><br />
+            Endpoint:<br />
+            GET /public/products
+            </para>
+            </summary>
+            <param name="ct">Cancellation token</param>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiExchangeData.GetProductsPlusAsync(System.Threading.CancellationToken)">
+            <summary>
+            Get extended product and currency information
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-product-information-plus-2" /><br />
+            Endpoint:<br />
+            GET /public/products-plus
+            </para>
+            </summary>
+            <param name="ct">Cancellation token</param>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiExchangeData.GetServerTimeAsync(System.Threading.CancellationToken)">
+            <summary>
+            Get server time
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-server-time-2" /><br />
+            Endpoint:<br />
+            GET /public/time
+            </para>
+            </summary>
+            <param name="ct">Cancellation token</param>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiExchangeData.GetTickersAsync(System.Threading.CancellationToken)">
+            <summary>
+            Get 24-hour spot ticker statistics for all symbols
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-24-hours-ticker-for-all-symbols-2" /><br />
+            Endpoint:<br />
+            GET /md/spot/ticker/24hr/all
+            </para>
+            </summary>
+            <param name="ct">Cancellation token</param>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiExchangeData.GetTickerAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get 24-hour spot ticker statistics for a symbol
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-24-hours-ticker-2" /><br />
+            Endpoint:<br />
+            GET /md/spot/ticker/24hr
+            </para>
+            </summary>
+            <param name="symbol">["<c>symbol</c>"] The symbol, for example <c>sBTCUSDT</c></param>
+            <param name="ct">Cancellation token</param>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiExchangeData.GetOrderBookAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get order book snapshot
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-order-book-3" /><br />
+            Endpoint:<br />
+            GET /md/orderbook
+            </para>
+            </summary>
+            <param name="symbol">["<c>symbol</c>"] The symbol, for example <c>sBTCUSDT</c></param>
+            <param name="ct">Cancellation token</param>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiExchangeData.GetFullOrderBookAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get full order book snapshot
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-full-order-book-2" /><br />
+            Endpoint:<br />
+            GET /md/fullbook
+            </para>
+            </summary>
+            <param name="symbol">["<c>symbol</c>"] The symbol, for example <c>sBTCUSDT</c></param>
+            <param name="ct">Cancellation token</param>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiExchangeData.GetRecentTradesAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get recent trades
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-recent-trades-2" /><br />
+            Endpoint:<br />
+            GET /md/trade
+            </para>
+            </summary>
+            <param name="symbol">["<c>symbol</c>"] The symbol, for example <c>sBTCUSDT</c></param>
+            <param name="ct">Cancellation token</param>
+        </member>
+        <member name="T:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexSocketClientSpotApi">
+            <summary>
+            Phemex Spot streams
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexSocketClientSpotApi.SubscribeToTradeUpdatesAsync(System.String,System.Action{CryptoExchange.Net.Objects.Sockets.DataEvent{Phemex.Net.Objects.Models.PhemexTradeUpdate}},System.Threading.CancellationToken)">
+            <summary>
+            Subscribe to trade updates
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#subscribe-trade-3" /><br />
+            Endpoint:<br />
+            wss://ws.phemex.com (method: trade.subscribe)
+            </para>
+            </summary>
+            <param name="symbol">["<c>symbol</c>"] The symbol to subscribe, for example <c>sBTCUSDT</c></param>
+            <param name="onMessage">The event handler for the received data</param>
+            <param name="ct">Cancellation token for closing this subscription</param>
+            <returns>A stream subscription. This stream subscription can be used to be notified when the socket is disconnected/reconnected</returns>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexSocketClientSpotApi.SubscribeToTickerUpdatesAsync(System.Action{CryptoExchange.Net.Objects.Sockets.DataEvent{Phemex.Net.Objects.Models.PhemexSpotTickerUpdate}},System.Threading.CancellationToken)">
+            <summary>
+            Subscribe to all-symbol spot ticker updates
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#subscribe-spot-24-hours-ticker" /><br />
+            Endpoint:<br />
+            wss://ws.phemex.com (method: spot_market24h.subscribe)
+            </para>
+            </summary>
+            <param name="onMessage">The event handler for the received data</param>
+            <param name="ct">Cancellation token for closing this subscription</param>
+            <returns>A stream subscription. This stream subscription can be used to be notified when the socket is disconnected/reconnected</returns>
+        </member>
+        <member name="T:Phemex.Net.Objects.Internal.PhemexDataResult">
+            <summary>
+            Data response
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Internal.PhemexDataResult.Code">
+            <summary>
+            ["<c>code</c>"] Response code
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Internal.PhemexDataResult.Message">
+            <summary>
+            ["<c>msg</c>"] Message
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Internal.PhemexDataResult`1">
+            <summary>
+            Data response
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Internal.PhemexDataResult`1.Data">
+            <summary>
+            ["<c>data</c>"] Data
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Internal.PhemexMarketResult">
+            <summary>
+            Market data response
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Internal.PhemexMarketResult.Error">
+            <summary>
+            ["<c>error</c>"] Error
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Internal.PhemexMarketResult.Id">
+            <summary>
+            ["<c>id</c>"] Id
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Internal.PhemexMarketResult`1">
+            <summary>
+            Market data response
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Internal.PhemexMarketResult`1.Data">
+            <summary>
+            ["<c>result</c>"] Data
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexBook">
+            <summary>
+            Order book levels
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexBook.Asks">
+            <summary>
+            ["<c>asks</c>"] Asks
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexBook.Bids">
+            <summary>
+            ["<c>bids</c>"] Bids
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexCurrency">
+            <summary>
+            Currency info
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexCurrency.Currency">
+            <summary>
+            ["<c>currency</c>"] Currency code
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexCurrency.Name">
+            <summary>
+            ["<c>name</c>"] Name
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexCurrency.Code">
+            <summary>
+            ["<c>code</c>"] Numeric code
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexCurrency.ValueScale">
+            <summary>
+            ["<c>valueScale</c>"] Value scale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexCurrency.MinValueEv">
+            <summary>
+            ["<c>minValueEv</c>"] Minimum value, scaled by valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexCurrency.MaxValueEv">
+            <summary>
+            ["<c>maxValueEv</c>"] Maximum value, scaled by valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexCurrency.Status">
+            <summary>
+            ["<c>status</c>"] Status
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexCurrency.DisplayCurrency">
+            <summary>
+            ["<c>displayCurrency</c>"] Display currency
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexCurrency.AssetsPrecision">
+            <summary>
+            ["<c>assetsPrecision</c>"] Asset precision
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexOrderBook">
+            <summary>
+            Order book snapshot
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderBook.Book">
+            <summary>
+            ["<c>book</c>"] Book data
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderBook.Depth">
+            <summary>
+            ["<c>depth</c>"] Depth
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderBook.Sequence">
+            <summary>
+            ["<c>sequence</c>"] Sequence
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderBook.TimestampNanoseconds">
+            <summary>
+            ["<c>timestamp</c>"] Timestamp in nanoseconds
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderBook.Symbol">
+            <summary>
+            ["<c>symbol</c>"] Symbol
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderBook.Type">
+            <summary>
+            ["<c>type</c>"] Update type
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderBook.Timestamp">
+            <summary>
+            Timestamp
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexOrderBookEntry">
+            <summary>
+            Order book entry
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderBookEntry.PriceEp">
+            <summary>
+            ["<c>0</c>"] Price, scaled by priceScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderBookEntry.QuantityEv">
+            <summary>
+            ["<c>1</c>"] Quantity, scaled by base currency valueScale
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexProduct">
+            <summary>
+            Product info
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.Symbol">
+            <summary>
+            ["<c>symbol</c>"] Symbol
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.Code">
+            <summary>
+            ["<c>code</c>"] Product code
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.Type">
+            <summary>
+            ["<c>type</c>"] Product type
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.DisplaySymbol">
+            <summary>
+            ["<c>displaySymbol</c>"] Display symbol
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.QuoteCurrency">
+            <summary>
+            ["<c>quoteCurrency</c>"] Quote currency
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.PriceScale">
+            <summary>
+            ["<c>priceScale</c>"] Price scale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.RatioScale">
+            <summary>
+            ["<c>ratioScale</c>"] Ratio scale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.PricePrecision">
+            <summary>
+            ["<c>pricePrecision</c>"] Price precision
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.BaseCurrency">
+            <summary>
+            ["<c>baseCurrency</c>"] Base currency
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.BaseTickSize">
+            <summary>
+            ["<c>baseTickSize</c>"] Base tick size display value
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.BaseTickSizeEv">
+            <summary>
+            ["<c>baseTickSizeEv</c>"] Base tick size scaled by base currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.QuoteTickSize">
+            <summary>
+            ["<c>quoteTickSize</c>"] Quote tick size display value
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.QuoteTickSizeEv">
+            <summary>
+            ["<c>quoteTickSizeEv</c>"] Quote tick size scaled by quote currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.BaseQtyPrecision">
+            <summary>
+            ["<c>baseQtyPrecision</c>"] Base quantity precision
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.QuoteQtyPrecision">
+            <summary>
+            ["<c>quoteQtyPrecision</c>"] Quote quantity precision
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.MinOrderValue">
+            <summary>
+            ["<c>minOrderValue</c>"] Minimum order value display value
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.MinOrderValueEv">
+            <summary>
+            ["<c>minOrderValueEv</c>"] Minimum order value scaled by quote currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.MaxBaseOrderSize">
+            <summary>
+            ["<c>maxBaseOrderSize</c>"] Maximum base order size display value
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.MaxBaseOrderSizeEv">
+            <summary>
+            ["<c>maxBaseOrderSizeEv</c>"] Maximum base order size scaled by base currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.MaxOrderValue">
+            <summary>
+            ["<c>maxOrderValue</c>"] Maximum order value display value
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.MaxOrderValueEv">
+            <summary>
+            ["<c>maxOrderValueEv</c>"] Maximum order value scaled by quote currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.Description">
+            <summary>
+            ["<c>description</c>"] Description
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.Status">
+            <summary>
+            ["<c>status</c>"] Product status
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProduct.ListTime">
+            <summary>
+            ["<c>listTime</c>"] List time in milliseconds
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexProductData">
+            <summary>
+            Product data
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProductData.Currencies">
+            <summary>
+            ["<c>currencies</c>"] Currencies
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexProductData.Products">
+            <summary>
+            ["<c>products</c>"] Products
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexServerTime">
+            <summary>
+            Server time
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexServerTime.ServerTimeMilliseconds">
+            <summary>
+            ["<c>serverTime</c>"] Server time in milliseconds
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexServerTime.ServerTime">
+            <summary>
+            Server time
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexSpotTickerUpdate">
+            <summary>
+            Spot ticker socket update
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexSpotTickerUpdate.Ticker">
+            <summary>
+            ["<c>spot_market24h</c>"] Ticker
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexSpotTickerUpdate.TimestampNanoseconds">
+            <summary>
+            ["<c>timestamp</c>"] Timestamp in nanoseconds
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexSpotTickerUpdate.Timestamp">
+            <summary>
+            Timestamp
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexTicker">
+            <summary>
+            24 hour spot ticker
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTicker.Symbol">
+            <summary>
+            ["<c>symbol</c>"] Symbol name
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTicker.OpenPriceEp">
+            <summary>
+            ["<c>openEp</c>"] Open price, scaled by priceScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTicker.HighPriceEp">
+            <summary>
+            ["<c>highEp</c>"] High price, scaled by priceScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTicker.LowPriceEp">
+            <summary>
+            ["<c>lowEp</c>"] Low price, scaled by priceScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTicker.LastPriceEp">
+            <summary>
+            ["<c>lastEp</c>"] Last price, scaled by priceScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTicker.BidPriceEp">
+            <summary>
+            ["<c>bidEp</c>"] Best bid price, scaled by priceScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTicker.AskPriceEp">
+            <summary>
+            ["<c>askEp</c>"] Best ask price, scaled by priceScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTicker.TurnoverEv">
+            <summary>
+            ["<c>turnoverEv</c>"] Turnover, scaled by quote currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTicker.VolumeEv">
+            <summary>
+            ["<c>volumeEv</c>"] Volume, scaled by base currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTicker.TimestampNanoseconds">
+            <summary>
+            ["<c>timestamp</c>"] Timestamp in nanoseconds
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTicker.Timestamp">
+            <summary>
+            Timestamp
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexTrade">
+            <summary>
+            Trade
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTrade.TimestampNanoseconds">
+            <summary>
+            ["<c>0</c>"] Timestamp in nanoseconds
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTrade.Side">
+            <summary>
+            ["<c>1</c>"] Side
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTrade.PriceEp">
+            <summary>
+            ["<c>2</c>"] Price, scaled by priceScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTrade.QuantityEv">
+            <summary>
+            ["<c>3</c>"] Quantity, scaled by base currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTrade.Timestamp">
+            <summary>
+            Timestamp
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexTradeUpdate">
+            <summary>
+            Trade update
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTradeUpdate.Sequence">
+            <summary>
+            ["<c>sequence</c>"] Sequence
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTradeUpdate.Symbol">
+            <summary>
+            ["<c>symbol</c>"] Symbol
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTradeUpdate.Trades">
+            <summary>
+            ["<c>trades</c>"] Trades
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexTradeUpdate.Type">
+            <summary>
+            ["<c>type</c>"] Update type
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Options.PhemexOptions">
+            <summary>
+            Phemex options
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Options.PhemexRestOptions">
+            <summary>
+            Options for the PhemexRestClient
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Options.PhemexRestOptions.Default">
+            <summary>
+            Default options for new clients
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.Objects.Options.PhemexRestOptions.#ctor">
+            <summary>
+            ctor
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Options.PhemexRestOptions.SpotOptions">
+            <summary>
+            Spot API options
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Options.PhemexSocketOptions">
+            <summary>
+            Options for the PhemexSocketClient
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Options.PhemexSocketOptions.Default">
+            <summary>
+            Default options for new clients
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.Objects.Options.PhemexSocketOptions.#ctor">
+            <summary>
+            ctor
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Options.PhemexSocketOptions.SpotOptions">
+            <summary>
+            Spot API options
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.PhemexApiAddresses">
+            <summary>
+            Api addresses
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.PhemexApiAddresses.RestClientSpotAddress">
+            <summary>
+            The address used by the PhemexRestClient for the Spot API
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.PhemexApiAddresses.SocketClientSpotAddress">
+            <summary>
+            The address used by the PhemexSocketClient for the websocket Spot API
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.PhemexApiAddresses.Default">
+            <summary>
+            The default addresses to connect to the Phemex API
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.PhemexApiAddresses.TestNet">
+            <summary>
+            The testnet addresses to connect to the Phemex API
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Sockets.PhemexSocketRequest">
+            <summary>
+            Socket request
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Sockets.PhemexSocketRequest.Id">
+            <summary>
+            ["<c>id</c>"] Request id
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Sockets.PhemexSocketRequest.Method">
+            <summary>
+            ["<c>method</c>"] Method
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Sockets.PhemexSocketRequest.Parameters">
+            <summary>
+            ["<c>params</c>"] Parameters
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Sockets.PhemexSocketResponse">
+            <summary>
+            Socket response
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Sockets.PhemexSocketResponse.Id">
+            <summary>
+            ["<c>id</c>"] Request id
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Sockets.PhemexSocketResponse.Error">
+            <summary>
+            ["<c>error</c>"] Error
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Sockets.PhemexSocketResponse.Result">
+            <summary>
+            ["<c>result</c>"] Result
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Sockets.Subscriptions.PhemexSubscription`1">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Objects.Sockets.Subscriptions.PhemexSubscription`1.#ctor(Microsoft.Extensions.Logging.ILogger,System.String,System.String,System.Object[],System.String,System.String,System.Action{System.DateTime,System.String,`0},System.Boolean)">
+            <summary>
+            ctor
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.Objects.Sockets.Subscriptions.PhemexSubscription`1.GetSubQuery(CryptoExchange.Net.Sockets.Default.SocketConnection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Objects.Sockets.Subscriptions.PhemexSubscription`1.GetUnsubQuery(CryptoExchange.Net.Sockets.Default.SocketConnection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Objects.Sockets.Subscriptions.PhemexSubscription`1.DoHandleMessage(CryptoExchange.Net.Sockets.Default.SocketConnection,System.DateTime,System.String,`0)">
+            <inheritdoc />
+        </member>
+        <member name="T:Phemex.Net.PhemexCredentials">
+            <summary>
+            Phemex API credentials
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.PhemexCredentials.#ctor">
+            <summary>
+            Create new credentials
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.PhemexCredentials.#ctor(System.String,System.String)">
+            <summary>
+            Create new credentials providing credentials in HMAC format
+            </summary>
+            <param name="key">API key</param>
+            <param name="secret">API secret</param>
+        </member>
+        <member name="M:Phemex.Net.PhemexCredentials.#ctor(CryptoExchange.Net.Authentication.HMACCredential)">
+            <summary>
+            Create new credentials providing HMAC credentials
+            </summary>
+            <param name="credential">HMAC credentials</param>
+        </member>
+        <member name="M:Phemex.Net.PhemexCredentials.WithHMAC(System.String,System.String)">
+            <summary>
+            Specify the HMAC credentials
+            </summary>
+            <param name="key">API key</param>
+            <param name="secret">API secret</param>
+        </member>
+        <member name="M:Phemex.Net.PhemexCredentials.Copy">
+            <inheritdoc />
+        </member>
+        <member name="T:Phemex.Net.PhemexEnvironment">
+            <summary>
+            Phemex environments
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.PhemexEnvironment.RestClientSpotAddress">
+            <summary>
+            Rest Spot API address
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.PhemexEnvironment.SocketClientSpotAddress">
+            <summary>
+            Socket Spot API address
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.PhemexEnvironment.#ctor">
+            <summary>
+            ctor for DI, use <see cref="M:Phemex.Net.PhemexEnvironment.CreateCustom(System.String,System.String,System.String)"/> for creating a custom environment
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.PhemexEnvironment.GetEnvironmentByName(System.String)">
+            <summary>
+            Get the Phemex environment by name
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.PhemexEnvironment.All">
+            <summary>
+            Available environment names
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.PhemexEnvironment.Live">
+            <summary>
+            Live environment
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.PhemexEnvironment.Testnet">
+            <summary>
+            Testnet environment
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.PhemexEnvironment.CreateCustom(System.String,System.String,System.String)">
+            <summary>
+            Create a custom environment
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.PhemexExchange">
+            <summary>
+            Phemex exchange information and configuration
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.PhemexExchange.Metadata">
+            <summary>
+            Platform metadata
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.PhemexExchange.AssetAliases">
+            <summary>
+            Aliases for Phemex assets
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.PhemexExchange.FormatSymbol(System.String,System.String,CryptoExchange.Net.SharedApis.TradingMode,System.Nullable{System.DateTime})">
+            <summary>
+            Format a base and quote asset to a Phemex recognized spot symbol
+            </summary>
+            <param name="baseAsset">Base asset</param>
+            <param name="quoteAsset">Quote asset</param>
+            <param name="tradingMode">Trading mode</param>
+            <param name="deliverTime">Delivery time for delivery futures</param>
+        </member>
+        <member name="M:Phemex.Net.PhemexExchange.ScaleValue(System.Decimal,System.Int32)">
+            <summary>
+            Scale a Phemex Ep/Ev/Er integer field to decimal using the exchange scale
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.PhemexExchange.ConvertNanosecondsToDateTime(System.Int64)">
+            <summary>
+            Convert a Phemex nanosecond timestamp to UTC DateTime
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.PhemexExchange.RateLimiter">
+            <summary>
+            Rate limiter configuration for the Phemex API
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.PhemexRateLimiters">
+            <summary>
+            Rate limiter configuration for the Phemex API
+            </summary>
+        </member>
+        <member name="E:Phemex.Net.PhemexRateLimiters.RateLimitTriggered">
+            <summary>
+            Event for when a rate limit is triggered
+            </summary>
+        </member>
+        <member name="E:Phemex.Net.PhemexRateLimiters.RateLimitUpdated">
+            <summary>
+            Event when the rate limit is updated. Note that it's only updated when a request is send, so there are no specific updates when the current usage is decaying.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions">
+            <summary>
+            Extensions for DI
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddPhemex(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Add services such as the IPhemexRestClient and IPhemexSocketClient. Configures the services based on the provided configuration.
+            </summary>
+            <param name="services">The service collection</param>
+            <param name="configuration">The configuration(section) containing the options</param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddPhemex(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Phemex.Net.Objects.Options.PhemexOptions})">
+            <summary>
+            Add services such as the IPhemexRestClient and IPhemexSocketClient. Services will be configured based on the provided options.
+            </summary>
+            <param name="services">The service collection</param>
+            <param name="optionsDelegate">Set options for the Phemex services</param>
+        </member>
+        <member name="M:Microsoft.Extensions.Configuration.Binder.SourceGeneration.BindingExtensions.Bind_PhemexOptions(Microsoft.Extensions.Configuration.IConfiguration,System.Object)">
+            <summary>Attempts to bind the given object instance to configuration values by matching property names against configuration keys recursively.</summary>
+        </member>
+        <member name="M:Microsoft.Extensions.Configuration.Binder.SourceGeneration.BindingExtensions.TryGetConfigurationValue(Microsoft.Extensions.Configuration.IConfiguration,System.String,System.String@)">
+            <summary>Tries to get the configuration value for the specified key.</summary>
+        </member>
+        <member name="M:Microsoft.Extensions.Configuration.Binder.SourceGeneration.BindingExtensions.ValidateConfigurationKeys(System.Type,System.Lazy{System.Collections.Generic.HashSet{System.String}},Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.BinderOptions)">
+            <summary>If required by the binder options, validates that there are no unknown keys in the input configuration object.</summary>
+        </member>
+    </members>
+</doc>
