@@ -1,6 +1,6 @@
+using System.Text.Json.Serialization;
 using CryptoExchange.Net.Converters;
 using CryptoExchange.Net.Converters.SystemTextJson;
-using System.Text.Json.Serialization;
 
 namespace Phemex.Net.Objects.Models
 {

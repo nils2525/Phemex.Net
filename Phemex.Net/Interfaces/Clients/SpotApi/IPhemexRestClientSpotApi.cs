@@ -13,5 +13,11 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// </summary>
         /// <see cref="IPhemexRestClientSpotApiExchangeData" />
         public IPhemexRestClientSpotApiExchangeData ExchangeData { get; }
+
+        /// <summary>
+        /// Endpoints related to account and trading data
+        /// </summary>
+        /// <see cref="IPhemexRestClientSpotApiAccount" />
+        public IPhemexRestClientSpotApiAccount Account { get; }
     }
 }

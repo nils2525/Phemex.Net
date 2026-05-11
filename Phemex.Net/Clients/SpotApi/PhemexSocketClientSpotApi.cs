@@ -66,6 +66,17 @@ namespace Phemex.Net.Clients.SpotApi
         public override ISocketMessageHandler CreateMessageConverter(WebSocketMessageType messageType) => new PhemexSocketMessageHandler();
 
         /// <inheritdoc />
+        protected override bool HandleUnhandledMessage(SocketConnection connection, string typeIdentifier, ReadOnlySpan<byte> data)
+        {
+            // Phemex can emit index tick frames on authenticated wallet/order streams.
+            // They are unrelated to the active subscription and should not be treated as malformed messages.
+            if (typeIdentifier == "tick")
+                return true;
+
+            return base.HandleUnhandledMessage(connection, typeIdentifier, data);
+        }
+
+        /// <inheritdoc />
         public override string FormatSymbol(string baseAsset, string quoteAsset, TradingMode tradingMode, DateTime? deliverDate = null)
             => PhemexExchange.FormatSymbol(baseAsset, quoteAsset, tradingMode, deliverDate);
 
@@ -122,6 +133,56 @@ namespace Phemex.Net.Clients.SpotApi
             });
 
             var subscription = new PhemexSubscription<PhemexSpotTickerUpdate>(_logger, "spot_market24h.subscribe", "spot_market24h.unsubscribe", [], "spot_market24h", null, internalHandler, false);
+            return await SubscribeAsync(BaseAddress, subscription, ct).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
+        public async Task<CallResult<UpdateSubscription>> SubscribeToOrderBookUpdatesAsync(string symbol, bool fullBook, Action<DataEvent<PhemexOrderBook>> onMessage, CancellationToken ct = default)
+        {
+            var internalHandler = new Action<DateTime, string?, PhemexOrderBook>((receiveTime, originalData, data) =>
+            {
+                var timestamp = data.Timestamp == default ? receiveTime : data.Timestamp;
+                UpdateTimeOffset(timestamp);
+
+                var updateType = data.Type == PhemexUpdateType.Snapshot
+                    ? SocketUpdateType.Snapshot
+                    : SocketUpdateType.Update;
+
+                onMessage(
+                    new DataEvent<PhemexOrderBook>(PhemexExchange.Metadata.Id, data, receiveTime, originalData)
+                        .WithUpdateType(updateType)
+                        .WithStreamId("book")
+                        .WithSymbol(data.Symbol)
+                        .WithDataTimestamp(timestamp, GetTimeOffset())
+                    );
+            });
+
+            var parameters = fullBook ? new object[] { symbol, true } : new object[] { symbol };
+            var subscription = new PhemexSubscription<PhemexOrderBook>(_logger, "orderbook.subscribe", "orderbook.unsubscribe", parameters, "book", symbol, internalHandler, false);
+            return await SubscribeAsync(BaseAddress, subscription, ct).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
+        public async Task<CallResult<UpdateSubscription>> SubscribeToWalletOrderUpdatesAsync(Action<DataEvent<PhemexWalletOrderUpdate>> onMessage, CancellationToken ct = default)
+        {
+            var internalHandler = new Action<DateTime, string?, PhemexWalletOrderUpdate>((receiveTime, originalData, data) =>
+            {
+                var timestamp = data.Timestamp == default ? receiveTime : data.Timestamp;
+                UpdateTimeOffset(timestamp);
+
+                var updateType = data.Type == PhemexUpdateType.Snapshot
+                    ? SocketUpdateType.Snapshot
+                    : SocketUpdateType.Update;
+
+                onMessage(
+                    new DataEvent<PhemexWalletOrderUpdate>(PhemexExchange.Metadata.Id, data, receiveTime, originalData)
+                        .WithUpdateType(updateType)
+                        .WithStreamId("wallet-order")
+                        .WithDataTimestamp(timestamp, GetTimeOffset())
+                    );
+            });
+
+            var subscription = new PhemexSubscription<PhemexWalletOrderUpdate>(_logger, "wo.subscribe", "wo.unsubscribe", [], "wallets", null, internalHandler, true);
             return await SubscribeAsync(BaseAddress, subscription, ct).ConfigureAwait(false);
         }
         #endregion

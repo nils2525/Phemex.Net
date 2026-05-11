@@ -41,5 +41,35 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// <param name="ct">Cancellation token for closing this subscription</param>
         /// <returns>A stream subscription. This stream subscription can be used to be notified when the socket is disconnected/reconnected</returns>
         Task<CallResult<UpdateSubscription>> SubscribeToTickerUpdatesAsync(Action<DataEvent<PhemexSpotTickerUpdate>> onMessage, CancellationToken ct = default);
+
+        /// <summary>
+        /// Subscribe to order book updates
+        /// <para>
+        /// Docs:<br />
+        /// <a href="https://phemex-docs.github.io/#subscribe-orderbook-2" /><br />
+        /// Endpoint:<br />
+        /// wss://ws.phemex.com (method: orderbook.subscribe)
+        /// </para>
+        /// </summary>
+        /// <param name="symbol">["<c>symbol</c>"] The symbol to subscribe, for example <c>sBTCUSDT</c></param>
+        /// <param name="fullBook">["<c>fullBook</c>"] Whether to subscribe to full depth with 100ms updates</param>
+        /// <param name="onMessage">The event handler for the received data</param>
+        /// <param name="ct">Cancellation token for closing this subscription</param>
+        /// <returns>A stream subscription. This stream subscription can be used to be notified when the socket is disconnected/reconnected</returns>
+        Task<CallResult<UpdateSubscription>> SubscribeToOrderBookUpdatesAsync(string symbol, bool fullBook, Action<DataEvent<PhemexOrderBook>> onMessage, CancellationToken ct = default);
+
+        /// <summary>
+        /// Subscribe to wallet and order updates
+        /// <para>
+        /// Docs:<br />
+        /// <a href="https://phemex-docs.github.io/#subscribe-wallet-order" /><br />
+        /// Endpoint:<br />
+        /// wss://ws.phemex.com (method: wo.subscribe)
+        /// </para>
+        /// </summary>
+        /// <param name="onMessage">The event handler for the received data</param>
+        /// <param name="ct">Cancellation token for closing this subscription</param>
+        /// <returns>A stream subscription. This stream subscription can be used to be notified when the socket is disconnected/reconnected</returns>
+        Task<CallResult<UpdateSubscription>> SubscribeToWalletOrderUpdatesAsync(Action<DataEvent<PhemexWalletOrderUpdate>> onMessage, CancellationToken ct = default);
     }
 }

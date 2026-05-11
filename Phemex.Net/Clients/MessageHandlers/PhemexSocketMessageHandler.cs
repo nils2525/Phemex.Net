@@ -11,6 +11,7 @@ namespace Phemex.Net.Clients.MessageHandlers
 
         public PhemexSocketMessageHandler()
         {
+            AddTopicMapping<PhemexOrderBook>(x => x.Symbol);
             AddTopicMapping<PhemexTradeUpdate>(x => x.Symbol);
         }
 
@@ -23,15 +24,39 @@ namespace Phemex.Net.Clients.MessageHandlers
             },
             new MessageTypeDefinition {
                 Fields = [
+                    new PropertyFieldReference("book"),
+                ],
+                TypeIdentifierCallback = x => "book",
+            },
+            new MessageTypeDefinition {
+                Fields = [
                     new PropertyFieldReference("spot_market24h"),
                 ],
                 TypeIdentifierCallback = x => "spot_market24h",
             },
             new MessageTypeDefinition {
                 Fields = [
+                    new PropertyFieldReference("tick"),
+                ],
+                TypeIdentifierCallback = x => "tick",
+            },
+            new MessageTypeDefinition {
+                Fields = [
                     new PropertyFieldReference("trades"),
                 ],
                 TypeIdentifierCallback = x => "trades",
+            },
+            new MessageTypeDefinition {
+                Fields = [
+                    new PropertyFieldReference("wallets"),
+                ],
+                TypeIdentifierCallback = x => "wallets",
+            },
+            new MessageTypeDefinition {
+                Fields = [
+                    new PropertyFieldReference("orders"),
+                ],
+                TypeIdentifierCallback = x => "wallets",
             }
         ];
     }

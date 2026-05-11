@@ -36,6 +36,8 @@ namespace Phemex.Net.Clients.SpotApi
         /// <inheritdoc />
         public IPhemexRestClientSpotApiExchangeData ExchangeData { get; }
         /// <inheritdoc />
+        public IPhemexRestClientSpotApiAccount Account { get; }
+        /// <inheritdoc />
         public string ExchangeName => "Phemex";
         #endregion
 
@@ -44,6 +46,7 @@ namespace Phemex.Net.Clients.SpotApi
             : base(logger, httpClient, options.Environment.RestClientSpotAddress, options, options.SpotOptions)
         {
             ExchangeData = new PhemexRestClientSpotApiExchangeData(this);
+            Account = new PhemexRestClientSpotApiAccount(this);
 
             StandardRequestHeaders = new Dictionary<string, string>
             {
@@ -64,6 +67,12 @@ namespace Phemex.Net.Clients.SpotApi
         {
             var result = await base.SendAsync<PhemexDataResult<T>>(BaseAddress, definition, parameters, cancellationToken, null, weight).ConfigureAwait(false);
             return result.As<T>(result.Data?.Data);
+        }
+
+        internal async Task<WebCallResult<T[]>> SendRowsDataAsync<T>(RequestDefinition definition, ParameterCollection? parameters, CancellationToken cancellationToken, int? weight = null) where T : class
+        {
+            var result = await base.SendAsync<PhemexDataResult<PhemexRows<T>>>(BaseAddress, definition, parameters, cancellationToken, null, weight).ConfigureAwait(false);
+            return result.As<T[]>(result.Data?.Data?.Rows);
         }
 
         internal async Task<WebCallResult<T>> SendMarketAsync<T>(RequestDefinition definition, ParameterCollection? parameters, CancellationToken cancellationToken, int? weight = null) where T : class

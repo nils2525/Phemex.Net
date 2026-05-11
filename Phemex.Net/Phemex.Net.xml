@@ -93,6 +93,9 @@
         <member name="P:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApi.ExchangeData">
             <inheritdoc />
         </member>
+        <member name="P:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApi.Account">
+            <inheritdoc />
+        </member>
         <member name="P:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApi.ExchangeName">
             <inheritdoc />
         </member>
@@ -106,6 +109,45 @@
             <inheritdoc />
         </member>
         <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApi.FormatSymbol(System.String,System.String,CryptoExchange.Net.SharedApis.TradingMode,System.Nullable{System.DateTime})">
+            <inheritdoc />
+        </member>
+        <member name="T:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiAccount">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiAccount.GetWalletsAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiAccount.PlaceOrderAsync(System.String,Phemex.Net.Enums.PhemexOrderSide,Phemex.Net.Enums.PhemexOrderType,Phemex.Net.Enums.PhemexQuantityType,System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Int64},System.String,System.Nullable{Phemex.Net.Enums.PhemexTimeInForce},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiAccount.CancelOrderAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiAccount.GetOpenOrderAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiAccount.GetOpenOrdersAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiAccount.GetOrderAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiAccount.GetOrderHistoryAsync(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiAccount.GetTradeHistoryAsync(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiAccount.GetDepositHistoryAsync(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiAccount.GetWithdrawalHistoryAsync(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiAccount.GetFundsHistoryAsync(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiAccount.GetFeeRatesAsync(System.String,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="T:Phemex.Net.Clients.SpotApi.PhemexRestClientSpotApiExchangeData">
@@ -146,6 +188,9 @@
         <member name="M:Phemex.Net.Clients.SpotApi.PhemexSocketClientSpotApi.CreateMessageConverter(System.Net.WebSockets.WebSocketMessageType)">
             <inheritdoc />
         </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexSocketClientSpotApi.HandleUnhandledMessage(CryptoExchange.Net.Sockets.Default.SocketConnection,System.String,System.ReadOnlySpan{System.Byte})">
+            <inheritdoc />
+        </member>
         <member name="M:Phemex.Net.Clients.SpotApi.PhemexSocketClientSpotApi.FormatSymbol(System.String,System.String,CryptoExchange.Net.SharedApis.TradingMode,System.Nullable{System.DateTime})">
             <inheritdoc />
         </member>
@@ -157,6 +202,22 @@
         </member>
         <member name="M:Phemex.Net.Clients.SpotApi.PhemexSocketClientSpotApi.SubscribeToTickerUpdatesAsync(System.Action{CryptoExchange.Net.Objects.Sockets.DataEvent{Phemex.Net.Objects.Models.PhemexSpotTickerUpdate}},System.Threading.CancellationToken)">
             <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexSocketClientSpotApi.SubscribeToOrderBookUpdatesAsync(System.String,System.Boolean,System.Action{CryptoExchange.Net.Objects.Sockets.DataEvent{Phemex.Net.Objects.Models.PhemexOrderBook}},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phemex.Net.Clients.SpotApi.PhemexSocketClientSpotApi.SubscribeToWalletOrderUpdatesAsync(System.Action{CryptoExchange.Net.Objects.Sockets.DataEvent{Phemex.Net.Objects.Models.PhemexWalletOrderUpdate}},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.Boolean">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.NullableBoolean">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
         </member>
         <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.Decimal">
             <summary>
@@ -183,6 +244,16 @@
             Defines the source generated JSON serialization contract metadata for a given type.
             </summary>
         </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexOrderStatus">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexOrderType">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
         <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexProductStatus">
             <summary>
             Defines the source generated JSON serialization contract metadata for a given type.
@@ -193,7 +264,67 @@
             Defines the source generated JSON serialization contract metadata for a given type.
             </summary>
         </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexQuantityType">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.NullablePhemexQuantityType">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexTimeInForce">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.NullablePhemexTimeInForce">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
         <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexUpdateType">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexDataResultPhemexRowsPhemexOrder">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexDataResultPhemexRowsPhemexOrderTrade">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexDataResultPhemexDepositArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexDataResultPhemexFeeRates">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexDataResultPhemexFundsHistory">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexDataResultPhemexOrderArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexDataResultPhemexOrder">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexDataResultPhemexOrderTradeArray">
             <summary>
             Defines the source generated JSON serialization contract metadata for a given type.
             </summary>
@@ -204,6 +335,16 @@
             </summary>
         </member>
         <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexDataResultPhemexServerTime">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexDataResultPhemexWalletArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexDataResultPhemexWithdrawalArray">
             <summary>
             Defines the source generated JSON serialization contract metadata for a given type.
             </summary>
@@ -228,6 +369,16 @@
             Defines the source generated JSON serialization contract metadata for a given type.
             </summary>
         </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexRowsPhemexOrder">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexRowsPhemexOrderTrade">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
         <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexBook">
             <summary>
             Defines the source generated JSON serialization contract metadata for a given type.
@@ -243,6 +394,56 @@
             Defines the source generated JSON serialization contract metadata for a given type.
             </summary>
         </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexDeposit">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexDepositArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexFeeRate">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexFeeRateArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexFeeRates">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexFundsEntry">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexFundsEntryArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexFundsHistory">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexOrder">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexOrderArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
         <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexOrderBook">
             <summary>
             Defines the source generated JSON serialization contract metadata for a given type.
@@ -254,6 +455,21 @@
             </summary>
         </member>
         <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexOrderBookEntryArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexOrderTrade">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexOrderTradeArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexOrderUpdate">
             <summary>
             Defines the source generated JSON serialization contract metadata for a given type.
             </summary>
@@ -304,6 +520,31 @@
             </summary>
         </member>
         <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexTradeUpdate">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexWallet">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexWalletArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexWalletOrderUpdate">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexWithdrawal">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Converters.PhemexSourceGenerationContext.PhemexWithdrawalArray">
             <summary>
             Defines the source generated JSON serialization contract metadata for a given type.
             </summary>
@@ -437,6 +678,66 @@
             ["<c>Sell</c>"] Sell
             </summary>
         </member>
+        <member name="T:Phemex.Net.Enums.PhemexOrderStatus">
+            <summary>
+            Order status
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexOrderStatus.Created">
+            <summary>
+            ["<c>Created</c>"] Created
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexOrderStatus.Untriggered">
+            <summary>
+            ["<c>Untriggered</c>"] Conditional order waiting to be triggered
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexOrderStatus.Triggered">
+            <summary>
+            ["<c>Triggered</c>"] Conditional order triggered
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexOrderStatus.Rejected">
+            <summary>
+            ["<c>Rejected</c>"] Rejected
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexOrderStatus.New">
+            <summary>
+            ["<c>New</c>"] New
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexOrderStatus.PartiallyFilled">
+            <summary>
+            ["<c>PartiallyFilled</c>"] Partially filled
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexOrderStatus.Filled">
+            <summary>
+            ["<c>Filled</c>"] Filled
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexOrderStatus.Canceled">
+            <summary>
+            ["<c>Canceled</c>"] Canceled
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Enums.PhemexOrderType">
+            <summary>
+            Order type
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexOrderType.Market">
+            <summary>
+            ["<c>Market</c>"] Market
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexOrderType.Limit">
+            <summary>
+            ["<c>Limit</c>"] Limit
+            </summary>
+        </member>
         <member name="T:Phemex.Net.Enums.PhemexProductStatus">
             <summary>
             Product status
@@ -465,6 +766,46 @@
         <member name="F:Phemex.Net.Enums.PhemexProductType.Spot">
             <summary>
             ["<c>Spot</c>"] Spot
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Enums.PhemexQuantityType">
+            <summary>
+            Quantity type
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexQuantityType.ByBase">
+            <summary>
+            ["<c>ByBase</c>"] Quantity is specified in base asset
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexQuantityType.ByQuote">
+            <summary>
+            ["<c>ByQuote</c>"] Quantity is specified in quote asset
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Enums.PhemexTimeInForce">
+            <summary>
+            Time in force
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexTimeInForce.GoodTillCancel">
+            <summary>
+            ["<c>GoodTillCancel</c>"] Good till cancel
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexTimeInForce.PostOnly">
+            <summary>
+            ["<c>PostOnly</c>"] Post only
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexTimeInForce.ImmediateOrCancel">
+            <summary>
+            ["<c>ImmediateOrCancel</c>"] Immediate or cancel
+            </summary>
+        </member>
+        <member name="F:Phemex.Net.Enums.PhemexTimeInForce.FillOrKill">
+            <summary>
+            ["<c>FillOrKill</c>"] Fill or kill
             </summary>
         </member>
         <member name="T:Phemex.Net.Enums.PhemexUpdateType">
@@ -548,6 +889,175 @@
             Endpoints related to retrieving market and system data
             </summary>
             <see cref="T:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiExchangeData" />
+        </member>
+        <member name="P:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApi.Account">
+            <summary>
+            Endpoints related to account and trading data
+            </summary>
+            <see cref="T:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiAccount" />
+        </member>
+        <member name="T:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiAccount">
+            <summary>
+            Phemex Spot account and trading endpoints
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiAccount.GetWalletsAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get spot wallets
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-wallets" /><br />
+            Endpoint:<br />
+            GET /spot/wallets
+            </para>
+            </summary>
+            <param name="currency">["<c>currency</c>"] Optional asset filter</param>
+            <param name="ct">Cancellation token</param>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiAccount.PlaceOrderAsync(System.String,Phemex.Net.Enums.PhemexOrderSide,Phemex.Net.Enums.PhemexOrderType,Phemex.Net.Enums.PhemexQuantityType,System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Int64},System.String,System.Nullable{Phemex.Net.Enums.PhemexTimeInForce},System.Threading.CancellationToken)">
+            <summary>
+            Place a spot order
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#place-order-http-put-prefered-3" /><br />
+            Endpoint:<br />
+            PUT /spot/orders/create
+            </para>
+            </summary>
+            <param name="symbol">["<c>symbol</c>"] Symbol</param>
+            <param name="side">["<c>side</c>"] Side</param>
+            <param name="orderType">["<c>ordType</c>"] Order type</param>
+            <param name="quantityType">["<c>qtyType</c>"] Quantity type</param>
+            <param name="baseQuantityEv">["<c>baseQtyEv</c>"] Base quantity, scaled by base currency valueScale</param>
+            <param name="quoteQuantityEv">["<c>quoteQtyEv</c>"] Quote quantity, scaled by quote currency valueScale</param>
+            <param name="priceEp">["<c>priceEp</c>"] Price, scaled by priceScale</param>
+            <param name="clientOrderId">["<c>clOrdID</c>"] Client order id</param>
+            <param name="timeInForce">["<c>timeInForce</c>"] Time in force</param>
+            <param name="ct">Cancellation token</param>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiAccount.CancelOrderAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Cancel a spot order
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#cancel-order-3" /><br />
+            Endpoint:<br />
+            DELETE /spot/orders
+            </para>
+            </summary>
+            <param name="symbol">["<c>symbol</c>"] Symbol</param>
+            <param name="orderId">["<c>orderID</c>"] Order id</param>
+            <param name="clientOrderId">["<c>clOrdID</c>"] Client order id</param>
+            <param name="ct">Cancellation token</param>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiAccount.GetOpenOrderAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get an open spot order
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-open-order-by-order-id-or-client-order-id" /><br />
+            Endpoint:<br />
+            GET /spot/orders/active
+            </para>
+            </summary>
+            <param name="symbol">["<c>symbol</c>"] Symbol</param>
+            <param name="orderId">["<c>orderID</c>"] Order id</param>
+            <param name="clientOrderId">["<c>clOrdID</c>"] Client order id</param>
+            <param name="ct">Cancellation token</param>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiAccount.GetOpenOrdersAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get open spot orders by symbol
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-all-open-orders-by-symbol" /><br />
+            Endpoint:<br />
+            GET /spot/orders
+            </para>
+            </summary>
+            <param name="symbol">["<c>symbol</c>"] Symbol</param>
+            <param name="ct">Cancellation token</param>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiAccount.GetOrderAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get order details by order id or client order id
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-orders-by-order-id-or-client-order-id" /><br />
+            Endpoint:<br />
+            GET /api-data/spots/orders/by-order-id
+            </para>
+            </summary>
+            <param name="symbol">["<c>symbol</c>"] Symbol</param>
+            <param name="orderId">["<c>orderID</c>"] Order id</param>
+            <param name="clientOrderId">["<c>clOrdID</c>"] Client order id</param>
+            <param name="ct">Cancellation token</param>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiAccount.GetOrderHistoryAsync(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            Get order history
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-order-history" /><br />
+            Endpoint:<br />
+            GET /api-data/spots/orders
+            </para>
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiAccount.GetTradeHistoryAsync(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            Get trade history
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-trade-history" /><br />
+            Endpoint:<br />
+            GET /api-data/spots/trades
+            </para>
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiAccount.GetDepositHistoryAsync(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            Get recent deposit history
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-recent-deposit-history" /><br />
+            Endpoint:<br />
+            GET /exchange/wallets/depositList
+            </para>
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiAccount.GetWithdrawalHistoryAsync(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            Get recent withdrawal history
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-recent-withdraw-history" /><br />
+            Endpoint:<br />
+            GET /exchange/wallets/withdrawList
+            </para>
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiAccount.GetFundsHistoryAsync(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            Get funds history
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-funds-history" /><br />
+            Endpoint:<br />
+            GET /api-data/spots/funds
+            </para>
+            </summary>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiAccount.GetFeeRatesAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get fee rates by quote currency
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#query-fee-rate-by-quote-currency" /><br />
+            Endpoint:<br />
+            GET /api-data/spots/fee-rate
+            </para>
+            </summary>
         </member>
         <member name="T:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexRestClientSpotApiExchangeData">
             <summary>
@@ -688,6 +1198,36 @@
             <param name="ct">Cancellation token for closing this subscription</param>
             <returns>A stream subscription. This stream subscription can be used to be notified when the socket is disconnected/reconnected</returns>
         </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexSocketClientSpotApi.SubscribeToOrderBookUpdatesAsync(System.String,System.Boolean,System.Action{CryptoExchange.Net.Objects.Sockets.DataEvent{Phemex.Net.Objects.Models.PhemexOrderBook}},System.Threading.CancellationToken)">
+            <summary>
+            Subscribe to order book updates
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#subscribe-orderbook-2" /><br />
+            Endpoint:<br />
+            wss://ws.phemex.com (method: orderbook.subscribe)
+            </para>
+            </summary>
+            <param name="symbol">["<c>symbol</c>"] The symbol to subscribe, for example <c>sBTCUSDT</c></param>
+            <param name="fullBook">["<c>fullBook</c>"] Whether to subscribe to full depth with 100ms updates</param>
+            <param name="onMessage">The event handler for the received data</param>
+            <param name="ct">Cancellation token for closing this subscription</param>
+            <returns>A stream subscription. This stream subscription can be used to be notified when the socket is disconnected/reconnected</returns>
+        </member>
+        <member name="M:Phemex.Net.Interfaces.Clients.SpotApi.IPhemexSocketClientSpotApi.SubscribeToWalletOrderUpdatesAsync(System.Action{CryptoExchange.Net.Objects.Sockets.DataEvent{Phemex.Net.Objects.Models.PhemexWalletOrderUpdate}},System.Threading.CancellationToken)">
+            <summary>
+            Subscribe to wallet and order updates
+            <para>
+            Docs:<br />
+            <a href="https://phemex-docs.github.io/#subscribe-wallet-order" /><br />
+            Endpoint:<br />
+            wss://ws.phemex.com (method: wo.subscribe)
+            </para>
+            </summary>
+            <param name="onMessage">The event handler for the received data</param>
+            <param name="ct">Cancellation token for closing this subscription</param>
+            <returns>A stream subscription. This stream subscription can be used to be notified when the socket is disconnected/reconnected</returns>
+        </member>
         <member name="T:Phemex.Net.Objects.Internal.PhemexDataResult">
             <summary>
             Data response
@@ -736,6 +1276,11 @@
         <member name="P:Phemex.Net.Objects.Internal.PhemexMarketResult`1.Data">
             <summary>
             ["<c>result</c>"] Data
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Internal.PhemexRows`1.Rows">
+            <summary>
+            ["<c>rows</c>"] Rows
             </summary>
         </member>
         <member name="T:Phemex.Net.Objects.Models.PhemexBook">
@@ -803,6 +1348,301 @@
             ["<c>assetsPrecision</c>"] Asset precision
             </summary>
         </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexDeposit">
+            <summary>
+            Deposit
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexDeposit.TransactionHash">
+            <summary>
+            ["<c>txHash</c>"] Transaction hash
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexDeposit.Currency">
+            <summary>
+            ["<c>currency</c>"] Asset
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexDeposit.AmountEv">
+            <summary>
+            ["<c>amountEv</c>"] Amount, scaled by currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexDeposit.Address">
+            <summary>
+            ["<c>address</c>"] Address
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexDeposit.Status">
+            <summary>
+            ["<c>status</c>"] Status
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexDeposit.CreateTimeMilliseconds">
+            <summary>
+            ["<c>createdAt</c>"] Create time in milliseconds
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexDeposit.CreateTime">
+            <summary>
+            Create time
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexFeeRate">
+            <summary>
+            Symbol fee rate
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFeeRate.Symbol">
+            <summary>
+            ["<c>symbol</c>"] Symbol
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFeeRate.MakerFeeRateEr">
+            <summary>
+            ["<c>makerFeeRateEr</c>"] Maker fee rate, scaled by ratioScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFeeRate.TakerFeeRateEr">
+            <summary>
+            ["<c>takerFeeRateEr</c>"] Taker fee rate, scaled by ratioScale
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexFeeRates">
+            <summary>
+            Symbol fee rates
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFeeRates.SymbolFeeRates">
+            <summary>
+            ["<c>symbolFeeRates</c>"] Symbol fee rates
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexFundsEntry">
+            <summary>
+            Funds history entry
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFundsEntry.Id">
+            <summary>
+            ["<c>id</c>"] Id
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFundsEntry.Currency">
+            <summary>
+            ["<c>currency</c>"] Asset
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFundsEntry.ExecutionId">
+            <summary>
+            ["<c>execId</c>"] Execution id
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFundsEntry.AmountEv">
+            <summary>
+            ["<c>amountEv</c>"] Amount, scaled by currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFundsEntry.FeeEv">
+            <summary>
+            ["<c>feeEv</c>"] Fee, scaled by currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFundsEntry.Side">
+            <summary>
+            ["<c>side</c>"] Side
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFundsEntry.Action">
+            <summary>
+            ["<c>action</c>"] Action
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFundsEntry.BalanceEv">
+            <summary>
+            ["<c>balanceEv</c>"] Balance, scaled by currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFundsEntry.TransactionTimeNanoseconds">
+            <summary>
+            ["<c>transactTimeNs</c>"] Transaction time in nanoseconds
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFundsEntry.Text">
+            <summary>
+            ["<c>text</c>"] Text
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFundsEntry.CreateTimeMilliseconds">
+            <summary>
+            ["<c>createTime</c>"] Create time in milliseconds
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFundsEntry.TransactionTime">
+            <summary>
+            Transaction time
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFundsEntry.CreateTime">
+            <summary>
+            Create time
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexFundsHistory">
+            <summary>
+            Funds history
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexFundsHistory.Rows">
+            <summary>
+            ["<c>rows</c>"] Rows
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexOrder">
+            <summary>
+            Spot order
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.OrderId">
+            <summary>
+            ["<c>orderID</c>"] Order id
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.ClientOrderId">
+            <summary>
+            ["<c>clOrdID</c>"] Client order id
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.Symbol">
+            <summary>
+            ["<c>symbol</c>"] Symbol
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.Side">
+            <summary>
+            ["<c>side</c>"] Side
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.OrderType">
+            <summary>
+            ["<c>ordType</c>"] Order type
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.Status">
+            <summary>
+            ["<c>ordStatus</c>"] Order status
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.QuantityType">
+            <summary>
+            ["<c>qtyType</c>"] Quantity type
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.TimeInForce">
+            <summary>
+            ["<c>timeInForce</c>"] Time in force
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.PriceEp">
+            <summary>
+            ["<c>priceEp</c>"] Price, scaled by priceScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.AveragePriceEp">
+            <summary>
+            ["<c>avgPriceEp</c>"] Average price, scaled by priceScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.AverageTransactPriceEp">
+            <summary>
+            ["<c>avgTransactPriceEp</c>"] Average executed price, scaled by priceScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.BaseQuantityEv">
+            <summary>
+            ["<c>baseQtyEv</c>"] Base quantity, scaled by base currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.QuoteQuantityEv">
+            <summary>
+            ["<c>quoteQtyEv</c>"] Quote quantity, scaled by quote currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.CumulativeBaseQuantityEv">
+            <summary>
+            ["<c>cumBaseQtyEv</c>"] Cumulative base quantity, scaled by base currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.CumulativeBaseValueEv">
+            <summary>
+            ["<c>cumBaseValueEv</c>"] Cumulative base quantity, scaled by base currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.CumulativeQuoteQuantityEv">
+            <summary>
+            ["<c>cumQuoteQtyEv</c>"] Cumulative quote quantity, scaled by quote currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.CumulativeQuoteValueEv">
+            <summary>
+            ["<c>cumQuoteValueEv</c>"] Cumulative quote quantity, scaled by quote currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.LeavesBaseQuantityEv">
+            <summary>
+            ["<c>leavesBaseQtyEv</c>"] Remaining base quantity, scaled by base currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.LeavesQuoteQuantityEv">
+            <summary>
+            ["<c>leavesQuoteQtyEv</c>"] Remaining quote quantity, scaled by quote currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.CumulativeFeeEv">
+            <summary>
+            ["<c>cumFeeEv</c>"] Cumulative fee, scaled by fee currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.FeeCurrency">
+            <summary>
+            ["<c>feeCurrency</c>"] Fee currency
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.BaseCurrency">
+            <summary>
+            ["<c>baseCurrency</c>"] Base currency
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.QuoteCurrency">
+            <summary>
+            ["<c>quoteCurrency</c>"] Quote currency
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.CreateTimeNanoseconds">
+            <summary>
+            ["<c>createTimeNs</c>"] Create time in nanoseconds
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.TransactionTimeNanoseconds">
+            <summary>
+            ["<c>transactTimeNs</c>"] Transaction time in nanoseconds
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.BusinessError">
+            <summary>
+            ["<c>bizError</c>"] Business error
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.CreateTime">
+            <summary>
+            Create time
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrder.TransactionTime">
+            <summary>
+            Transaction time
+            </summary>
+        </member>
         <member name="T:Phemex.Net.Objects.Models.PhemexOrderBook">
             <summary>
             Order book snapshot
@@ -856,6 +1696,111 @@
         <member name="P:Phemex.Net.Objects.Models.PhemexOrderBookEntry.QuantityEv">
             <summary>
             ["<c>1</c>"] Quantity, scaled by base currency valueScale
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexOrderTrade">
+            <summary>
+            Spot user trade
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderTrade.ExecutionId">
+            <summary>
+            ["<c>execId</c>"] Execution id
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderTrade.ExecutionIdUpper">
+            <summary>
+            ["<c>execID</c>"] Execution id
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderTrade.OrderId">
+            <summary>
+            ["<c>orderID</c>"] Order id
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderTrade.ClientOrderId">
+            <summary>
+            ["<c>clOrdID</c>"] Client order id
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderTrade.Symbol">
+            <summary>
+            ["<c>symbol</c>"] Symbol
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderTrade.Side">
+            <summary>
+            ["<c>side</c>"] Side
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderTrade.ExecutionPriceEp">
+            <summary>
+            ["<c>execPriceEp</c>"] Execution price, scaled by priceScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderTrade.ExecutionBaseQuantityEv">
+            <summary>
+            ["<c>execBaseQtyEv</c>"] Execution base quantity, scaled by base currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderTrade.ExecutionQuoteQuantityEv">
+            <summary>
+            ["<c>execQuoteQtyEv</c>"] Execution quote quantity, scaled by quote currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderTrade.ExecutionFeeEv">
+            <summary>
+            ["<c>execFeeEv</c>"] Execution fee, scaled by fee currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderTrade.FeeCurrency">
+            <summary>
+            ["<c>feeCurrency</c>"] Fee currency
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderTrade.BaseCurrency">
+            <summary>
+            ["<c>baseCurrency</c>"] Base currency
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderTrade.QuoteCurrency">
+            <summary>
+            ["<c>quoteCurrency</c>"] Quote currency
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderTrade.LastLiquidityIndicator">
+            <summary>
+            ["<c>lastLiquidityInd</c>"] Liquidity indicator
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderTrade.TransactionTimeNanoseconds">
+            <summary>
+            ["<c>transactTimeNs</c>"] Transaction time in nanoseconds
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderTrade.TransactionTime">
+            <summary>
+            Transaction time
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexOrderUpdate">
+            <summary>
+            Wallet and order update
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderUpdate.Open">
+            <summary>
+            ["<c>open</c>"] Open orders
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderUpdate.Closed">
+            <summary>
+            ["<c>closed</c>"] Closed orders
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexOrderUpdate.Fills">
+            <summary>
+            ["<c>fills</c>"] Fills
             </summary>
         </member>
         <member name="T:Phemex.Net.Objects.Models.PhemexProduct">
@@ -1146,6 +2091,126 @@
         <member name="P:Phemex.Net.Objects.Models.PhemexTradeUpdate.Type">
             <summary>
             ["<c>type</c>"] Update type
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexWallet">
+            <summary>
+            Spot wallet
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWallet.Currency">
+            <summary>
+            ["<c>currency</c>"] Asset
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWallet.BalanceEv">
+            <summary>
+            ["<c>balanceEv</c>"] Balance, scaled by currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWallet.LockedTradingBalanceEv">
+            <summary>
+            ["<c>lockedTradingBalanceEv</c>"] Locked trading balance, scaled by currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWallet.LockedWithdrawEv">
+            <summary>
+            ["<c>lockedWithdrawEv</c>"] Locked withdrawal balance, scaled by currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWallet.LastUpdateTimeNanoseconds">
+            <summary>
+            ["<c>lastUpdateTimeNs</c>"] Last update time in nanoseconds
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWallet.LastUpdateTime">
+            <summary>
+            Last update time
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexWalletOrderUpdate">
+            <summary>
+            Wallet-order socket update
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWalletOrderUpdate.Wallets">
+            <summary>
+            ["<c>wallets</c>"] Wallet updates
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWalletOrderUpdate.Orders">
+            <summary>
+            ["<c>orders</c>"] Order updates
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWalletOrderUpdate.Sequence">
+            <summary>
+            ["<c>sequence</c>"] Sequence
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWalletOrderUpdate.TimestampNanoseconds">
+            <summary>
+            ["<c>timestamp</c>"] Timestamp in nanoseconds
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWalletOrderUpdate.Type">
+            <summary>
+            ["<c>type</c>"] Update type
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWalletOrderUpdate.Timestamp">
+            <summary>
+            Timestamp
+            </summary>
+        </member>
+        <member name="T:Phemex.Net.Objects.Models.PhemexWithdrawal">
+            <summary>
+            Withdrawal
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWithdrawal.TransactionHash">
+            <summary>
+            ["<c>txHash</c>"] Transaction hash
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWithdrawal.Currency">
+            <summary>
+            ["<c>currency</c>"] Asset
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWithdrawal.AmountEv">
+            <summary>
+            ["<c>amountEv</c>"] Amount, scaled by currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWithdrawal.FeeEv">
+            <summary>
+            ["<c>feeEv</c>"] Fee, scaled by currency valueScale
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWithdrawal.Address">
+            <summary>
+            ["<c>address</c>"] Address
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWithdrawal.Status">
+            <summary>
+            ["<c>status</c>"] Status
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWithdrawal.WithdrawalStatus">
+            <summary>
+            ["<c>withdrawStatus</c>"] Withdrawal status
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWithdrawal.CreateTimeMilliseconds">
+            <summary>
+            ["<c>createdAt</c>"] Create time in milliseconds
+            </summary>
+        </member>
+        <member name="P:Phemex.Net.Objects.Models.PhemexWithdrawal.CreateTime">
+            <summary>
+            Create time
             </summary>
         </member>
         <member name="T:Phemex.Net.Objects.Options.PhemexOptions">
