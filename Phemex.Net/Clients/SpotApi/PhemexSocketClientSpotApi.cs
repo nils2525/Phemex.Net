@@ -158,7 +158,7 @@ namespace Phemex.Net.Clients.SpotApi
             });
 
             var parameters = fullBook ? new object[] { symbol, true } : new object[] { symbol };
-            var subscription = new PhemexSubscription<PhemexOrderBook>(_logger, "orderbook.subscribe", "orderbook.unsubscribe", parameters, "book", symbol, internalHandler, false);
+            var subscription = new PhemexOrderBookSubscription(_logger, parameters, symbol, internalHandler);
             return await SubscribeAsync(BaseAddress, subscription, ct).ConfigureAwait(false);
         }
 
