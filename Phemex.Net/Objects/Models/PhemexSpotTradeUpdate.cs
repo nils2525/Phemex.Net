@@ -4,9 +4,9 @@ using System.Text.Json.Serialization;
 namespace Phemex.Net.Objects.Models
 {
     /// <summary>
-    /// Trade update
+    /// Spot trade update
     /// </summary>
-    public record PhemexTradeUpdate
+    public record PhemexSpotTradeUpdate
     {
         /// <summary>
         /// ["<c>sequence</c>"] Sequence

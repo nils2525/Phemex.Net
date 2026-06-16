@@ -16,6 +16,11 @@ namespace Phemex.Net.Enums
         [Map("Perpetual")]
         Perpetual,
         /// <summary>
+        /// ["<c>PerpetualV2</c>"] Perpetual V2
+        /// </summary>
+        [Map("PerpetualV2")]
+        PerpetualV2,
+        /// <summary>
         /// ["<c>Spot</c>"] Spot
         /// </summary>
         [Map("Spot")]

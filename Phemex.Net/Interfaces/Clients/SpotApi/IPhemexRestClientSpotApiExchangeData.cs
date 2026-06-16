@@ -108,6 +108,6 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// </summary>
         /// <param name="symbol">["<c>symbol</c>"] The symbol, for example <c>sBTCUSDT</c></param>
         /// <param name="ct">Cancellation token</param>
-        Task<WebCallResult<PhemexTradeUpdate>> GetRecentTradesAsync(string symbol, CancellationToken ct = default);
+        Task<WebCallResult<PhemexSpotTradeUpdate>> GetRecentTradesAsync(string symbol, CancellationToken ct = default);
     }
 }

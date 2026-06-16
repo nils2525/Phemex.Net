@@ -28,11 +28,16 @@ namespace Phemex.Net.Objects.Options
         /// Spot API options
         /// </summary>
         public SocketApiOptions SpotOptions { get; private set; } = new SocketApiOptions();
+        /// <summary>
+        /// Futures API options
+        /// </summary>
+        public SocketApiOptions FuturesOptions { get; private set; } = new SocketApiOptions();
 
         internal PhemexSocketOptions Set(PhemexSocketOptions targetOptions)
         {
             targetOptions = base.Set<PhemexSocketOptions>(targetOptions);
             targetOptions.SpotOptions = SpotOptions.Set(targetOptions.SpotOptions);
+            targetOptions.FuturesOptions = FuturesOptions.Set(targetOptions.FuturesOptions);
             return targetOptions;
         }
     }

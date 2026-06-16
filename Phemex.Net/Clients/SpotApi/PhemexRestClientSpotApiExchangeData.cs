@@ -81,14 +81,14 @@ namespace Phemex.Net.Clients.SpotApi
         }
 
         /// <inheritdoc />
-        public async Task<WebCallResult<PhemexTradeUpdate>> GetRecentTradesAsync(string symbol, CancellationToken ct = default)
+        public async Task<WebCallResult<PhemexSpotTradeUpdate>> GetRecentTradesAsync(string symbol, CancellationToken ct = default)
         {
             var parameters = new ParameterCollection
             {
                 { "symbol", symbol }
             };
             var request = _definitions.GetOrCreate(HttpMethod.Get, "/md/trade", PhemexExchange.RateLimiter.PhemexRestIp, 1, false);
-            return await _baseClient.SendMarketAsync<PhemexTradeUpdate>(request, parameters, ct).ConfigureAwait(false);
+            return await _baseClient.SendMarketAsync<PhemexSpotTradeUpdate>(request, parameters, ct).ConfigureAwait(false);
         }
         #endregion
     }

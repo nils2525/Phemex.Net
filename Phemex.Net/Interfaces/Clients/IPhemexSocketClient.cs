@@ -1,4 +1,5 @@
 using CryptoExchange.Net.Interfaces.Clients;
+using Phemex.Net.Interfaces.Clients.FuturesApi;
 using Phemex.Net.Interfaces.Clients.SpotApi;
 
 namespace Phemex.Net.Interfaces.Clients
@@ -13,5 +14,11 @@ namespace Phemex.Net.Interfaces.Clients
         /// </summary>
         /// <see cref="IPhemexSocketClientSpotApi"/>
         public IPhemexSocketClientSpotApi SpotApi { get; }
+
+        /// <summary>
+        /// Futures API endpoints
+        /// </summary>
+        /// <see cref="IPhemexSocketClientFuturesApi"/>
+        public IPhemexSocketClientFuturesApi FuturesApi { get; }
     }
 }

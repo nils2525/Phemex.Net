@@ -43,7 +43,7 @@ namespace Phemex.Net
         };
 
         /// <summary>
-        /// Format a base and quote asset to a Phemex recognized spot symbol
+        /// Format a base and quote asset to a Phemex recognized symbol
         /// </summary>
         /// <param name="baseAsset">Base asset</param>
         /// <param name="quoteAsset">Quote asset</param>
@@ -54,7 +54,7 @@ namespace Phemex.Net
             baseAsset = AssetAliases.CommonToExchangeName(baseAsset.ToUpperInvariant());
             quoteAsset = AssetAliases.CommonToExchangeName(quoteAsset.ToUpperInvariant());
 
-            return "s" + baseAsset + quoteAsset;
+            return tradingMode is TradingMode.Spot ? "s" + baseAsset + quoteAsset : baseAsset + quoteAsset;
         }
 
         /// <summary>

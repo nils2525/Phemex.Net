@@ -20,6 +20,7 @@ using Phemex.Net.Objects.Sockets.Subscriptions;
 using System;
 using System.Linq;
 using System.Net.WebSockets;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -73,7 +74,36 @@ namespace Phemex.Net.Clients.SpotApi
             if (typeIdentifier == "tick")
                 return true;
 
+            if (IsSuccessAcknowledgement(data))
+                return true;
+
             return base.HandleUnhandledMessage(connection, typeIdentifier, data);
+        }
+
+        private static bool IsSuccessAcknowledgement(ReadOnlySpan<byte> data)
+        {
+            try
+            {
+                using var doc = JsonDocument.Parse(data.ToArray());
+                var root = doc.RootElement;
+                if (!root.TryGetProperty("id", out _))
+                    return false;
+
+                if (root.TryGetProperty("error", out var error)
+                    && error.ValueKind is not JsonValueKind.Null and not JsonValueKind.Undefined)
+                    return false;
+
+                if (!root.TryGetProperty("result", out var result) || result.ValueKind != JsonValueKind.Object)
+                    return false;
+
+                return result.TryGetProperty("status", out var status)
+                       && status.ValueKind == JsonValueKind.String
+                       && string.Equals(status.GetString(), "success", StringComparison.OrdinalIgnoreCase);
+            }
+            catch (JsonException)
+            {
+                return false;
+            }
         }
 
         /// <inheritdoc />
@@ -85,9 +115,9 @@ namespace Phemex.Net.Clients.SpotApi
             => new PhemexAuthenticationProvider(credentials);
 
         /// <inheritdoc />
-        public async Task<CallResult<UpdateSubscription>> SubscribeToTradeUpdatesAsync(string symbol, Action<DataEvent<PhemexTradeUpdate>> onMessage, CancellationToken ct = default)
+        public async Task<CallResult<UpdateSubscription>> SubscribeToTradeUpdatesAsync(string symbol, Action<DataEvent<PhemexSpotTradeUpdate>> onMessage, CancellationToken ct = default)
         {
-            var internalHandler = new Action<DateTime, string?, PhemexTradeUpdate>((receiveTime, originalData, data) =>
+            var internalHandler = new Action<DateTime, string?, PhemexSpotTradeUpdate>((receiveTime, originalData, data) =>
             {
                 if (data.Trades == null || data.Trades.Length == 0)
                     return;
@@ -100,7 +130,7 @@ namespace Phemex.Net.Clients.SpotApi
                     : SocketUpdateType.Update;
 
                 onMessage(
-                    new DataEvent<PhemexTradeUpdate>(PhemexExchange.Metadata.Id, data, receiveTime, originalData)
+                    new DataEvent<PhemexSpotTradeUpdate>(PhemexExchange.Metadata.Id, data, receiveTime, originalData)
                         .WithUpdateType(updateType)
                         .WithStreamId("trades")
                         .WithSymbol(data.Symbol)
@@ -108,7 +138,7 @@ namespace Phemex.Net.Clients.SpotApi
                     );
             });
 
-            var subscription = new PhemexSubscription<PhemexTradeUpdate>(_logger, "trade.subscribe", "trade.unsubscribe", [symbol], "trades", symbol, internalHandler, false);
+            var subscription = new PhemexSubscription<PhemexSpotTradeUpdate>(_logger, "trade.subscribe", "trade.unsubscribe", [symbol], "trades", symbol, internalHandler, false);
             return await SubscribeAsync(BaseAddress, subscription, ct).ConfigureAwait(false);
         }
 

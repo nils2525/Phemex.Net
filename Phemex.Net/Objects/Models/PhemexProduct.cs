@@ -1,4 +1,5 @@
 using Phemex.Net.Enums;
+using CryptoExchange.Net.Converters.SystemTextJson;
 using System.Text.Json.Serialization;
 
 namespace Phemex.Net.Objects.Models
@@ -33,6 +34,17 @@ namespace Phemex.Net.Objects.Models
         /// </summary>
         [JsonPropertyName("quoteCurrency")]
         public string QuoteCurrency { get; set; } = string.Empty;
+        /// <summary>
+        /// ["<c>settleCurrency</c>"] Settlement currency
+        /// </summary>
+        [JsonPropertyName("settleCurrency")]
+        public string SettleCurrency { get; set; } = string.Empty;
+        /// <summary>
+        /// ["<c>tickSize</c>"] Price tick size display value
+        /// </summary>
+        [JsonPropertyName("tickSize")]
+        [JsonConverter(typeof(NumberStringConverter))]
+        public string? TickSize { get; set; }
         /// <summary>
         /// ["<c>priceScale</c>"] Price scale
         /// </summary>
@@ -79,6 +91,17 @@ namespace Phemex.Net.Objects.Models
         [JsonPropertyName("baseQtyPrecision")]
         public int? BaseQtyPrecision { get; set; }
         /// <summary>
+        /// ["<c>qtyPrecision</c>"] Quantity precision
+        /// </summary>
+        [JsonPropertyName("qtyPrecision")]
+        public int? QuantityPrecision { get; set; }
+        /// <summary>
+        /// ["<c>qtyStepSize</c>"] Quantity step size display value
+        /// </summary>
+        [JsonPropertyName("qtyStepSize")]
+        [JsonConverter(typeof(NumberStringConverter))]
+        public string? QuantityStepSize { get; set; }
+        /// <summary>
         /// ["<c>quoteQtyPrecision</c>"] Quote quantity precision
         /// </summary>
         [JsonPropertyName("quoteQtyPrecision")]
@@ -103,6 +126,12 @@ namespace Phemex.Net.Objects.Models
         /// </summary>
         [JsonPropertyName("maxBaseOrderSizeEv")]
         public decimal? MaxBaseOrderSizeEv { get; set; }
+        /// <summary>
+        /// ["<c>maxOrderQtyRq</c>"] Maximum order quantity display value
+        /// </summary>
+        [JsonPropertyName("maxOrderQtyRq")]
+        [JsonConverter(typeof(NumberStringConverter))]
+        public string? MaxOrderQuantity { get; set; }
         /// <summary>
         /// ["<c>maxOrderValue</c>"] Maximum order value display value
         /// </summary>

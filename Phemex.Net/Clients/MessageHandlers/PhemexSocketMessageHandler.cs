@@ -12,7 +12,8 @@ namespace Phemex.Net.Clients.MessageHandlers
         public PhemexSocketMessageHandler()
         {
             AddTopicMapping<PhemexOrderBook>(x => x.Symbol);
-            AddTopicMapping<PhemexTradeUpdate>(x => x.Symbol);
+            AddTopicMapping<PhemexSpotTradeUpdate>(x => x.Symbol);
+            AddTopicMapping<PhemexFutureTradeUpdate>(x => x.Symbol);
         }
 
         protected override MessageTypeDefinition[] TypeEvaluators { get; } = [
@@ -45,6 +46,12 @@ namespace Phemex.Net.Clients.MessageHandlers
                     new PropertyFieldReference("trades"),
                 ],
                 TypeIdentifierCallback = x => "trades",
+            },
+            new MessageTypeDefinition {
+                Fields = [
+                    new PropertyFieldReference("trades_p"),
+                ],
+                TypeIdentifierCallback = x => "trades_p",
             },
             new MessageTypeDefinition {
                 Fields = [

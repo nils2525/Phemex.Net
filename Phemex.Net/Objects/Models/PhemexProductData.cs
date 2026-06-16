@@ -17,5 +17,10 @@ namespace Phemex.Net.Objects.Models
         /// </summary>
         [JsonPropertyName("products")]
         public PhemexProduct[] Products { get; set; } = [];
+        /// <summary>
+        /// ["<c>perpProductsV2</c>"] USDT/USDC-margined perpetual products
+        /// </summary>
+        [JsonPropertyName("perpProductsV2")]
+        public PhemexProduct[] PerpProductsV2 { get; set; } = [];
     }
 }
