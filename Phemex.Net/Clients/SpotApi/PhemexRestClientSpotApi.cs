@@ -42,8 +42,8 @@ namespace Phemex.Net.Clients.SpotApi
         #endregion
 
         #region Constructors
-        internal PhemexRestClientSpotApi(PhemexRestClient baseClient, ILogger logger, HttpClient? httpClient, PhemexRestOptions options)
-            : base(logger, httpClient, options.Environment.RestClientSpotAddress, options, options.SpotOptions)
+        internal PhemexRestClientSpotApi(PhemexRestClient baseClient, ILoggerFactory? loggerFactory, HttpClient? httpClient, PhemexRestOptions options)
+            : base(loggerFactory, PhemexExchange.Metadata.Id, httpClient, options.Environment.RestClientSpotAddress, options, options.SpotOptions)
         {
             ExchangeData = new PhemexRestClientSpotApiExchangeData(this);
             Account = new PhemexRestClientSpotApiAccount(this);
@@ -63,27 +63,30 @@ namespace Phemex.Net.Clients.SpotApi
         protected override PhemexAuthenticationProvider CreateAuthenticationProvider(PhemexCredentials credentials)
             => new PhemexAuthenticationProvider(credentials);
 
-        internal async Task<WebCallResult<T>> SendDataAsync<T>(RequestDefinition definition, ParameterCollection? parameters, CancellationToken cancellationToken, int? weight = null) where T : class
+        internal async Task<HttpResult<T>> SendDataAsync<T>(RequestDefinition definition, Parameters? parameters, CancellationToken cancellationToken, int? weight = null) where T : class
         {
-            var result = await base.SendAsync<PhemexDataResult<T>>(BaseAddress, definition, parameters, cancellationToken, null, weight).ConfigureAwait(false);
+            definition.BaseAddress = BaseAddress;
+            var result = await base.SendAsync<PhemexDataResult<T>>(definition, parameters, cancellationToken, null, weight).ConfigureAwait(false);
             return result.As<T>(result.Data?.Data);
         }
 
-        internal async Task<WebCallResult<T[]>> SendRowsDataAsync<T>(RequestDefinition definition, ParameterCollection? parameters, CancellationToken cancellationToken, int? weight = null) where T : class
+        internal async Task<HttpResult<T[]>> SendRowsDataAsync<T>(RequestDefinition definition, Parameters? parameters, CancellationToken cancellationToken, int? weight = null) where T : class
         {
-            var result = await base.SendAsync<PhemexDataResult<PhemexRows<T>>>(BaseAddress, definition, parameters, cancellationToken, null, weight).ConfigureAwait(false);
+            definition.BaseAddress = BaseAddress;
+            var result = await base.SendAsync<PhemexDataResult<PhemexRows<T>>>(definition, parameters, cancellationToken, null, weight).ConfigureAwait(false);
             return result.As<T[]>(result.Data?.Data?.Rows);
         }
 
-        internal async Task<WebCallResult<T>> SendMarketAsync<T>(RequestDefinition definition, ParameterCollection? parameters, CancellationToken cancellationToken, int? weight = null) where T : class
+        internal async Task<HttpResult<T>> SendMarketAsync<T>(RequestDefinition definition, Parameters? parameters, CancellationToken cancellationToken, int? weight = null) where T : class
         {
-            var result = await base.SendAsync<PhemexMarketResult<T>>(BaseAddress, definition, parameters, cancellationToken, null, weight).ConfigureAwait(false);
+            definition.BaseAddress = BaseAddress;
+            var result = await base.SendAsync<PhemexMarketResult<T>>(definition, parameters, cancellationToken, null, weight).ConfigureAwait(false);
             return result.As<T>(result.Data?.Data);
         }
 
         /// <inheritdoc />
-        protected override Task<WebCallResult<DateTime>> GetServerTimestampAsync()
-            => Task.FromResult(new WebCallResult<DateTime>(null, null, null, null, null, null, null, null, null, null, null, ResultDataSource.Server, DateTime.UtcNow, null));
+        protected override Task<HttpResult<DateTime>> GetServerTimestampAsync()
+            => Task.FromResult(new HttpResult<DateTime>(PhemexExchange.Metadata.Id, DateTime.UtcNow, null));
 
         /// <inheritdoc />
         public override string FormatSymbol(string baseAsset, string quoteAsset, TradingMode tradingMode, DateTime? deliverDate = null)

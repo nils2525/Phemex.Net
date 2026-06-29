@@ -32,8 +32,8 @@ namespace Phemex.Net.Clients.SpotApi
     internal partial class PhemexSocketClientSpotApi : SocketApiClient<PhemexEnvironment, PhemexAuthenticationProvider, PhemexCredentials>, IPhemexSocketClientSpotApi
     {
         #region Constructors
-        internal PhemexSocketClientSpotApi(PhemexSocketClient baseClient, ILogger logger, PhemexSocketOptions options) :
-            base(logger, options.Environment.SocketClientSpotAddress, options, options.SpotOptions)
+        internal PhemexSocketClientSpotApi(PhemexSocketClient baseClient, ILoggerFactory? loggerFactory, PhemexSocketOptions options) :
+            base(loggerFactory, PhemexExchange.Metadata.Id, options.Environment.SocketClientSpotAddress, options, options.SpotOptions)
         {
             RateLimiter = PhemexExchange.RateLimiter.PhemexSocket;
             KeepAliveInterval = TimeSpan.Zero;
@@ -115,7 +115,7 @@ namespace Phemex.Net.Clients.SpotApi
             => new PhemexAuthenticationProvider(credentials);
 
         /// <inheritdoc />
-        public async Task<CallResult<UpdateSubscription>> SubscribeToTradeUpdatesAsync(string symbol, Action<DataEvent<PhemexSpotTradeUpdate>> onMessage, CancellationToken ct = default)
+        public async Task<WebSocketResult<UpdateSubscription>> SubscribeToTradeUpdatesAsync(string symbol, Action<DataEvent<PhemexSpotTradeUpdate>> onMessage, CancellationToken ct = default)
         {
             var internalHandler = new Action<DateTime, string?, PhemexSpotTradeUpdate>((receiveTime, originalData, data) =>
             {
@@ -143,7 +143,7 @@ namespace Phemex.Net.Clients.SpotApi
         }
 
         /// <inheritdoc />
-        public async Task<CallResult<UpdateSubscription>> SubscribeToTickerUpdatesAsync(Action<DataEvent<PhemexSpotTickerUpdate>> onMessage, CancellationToken ct = default)
+        public async Task<WebSocketResult<UpdateSubscription>> SubscribeToTickerUpdatesAsync(Action<DataEvent<PhemexSpotTickerUpdate>> onMessage, CancellationToken ct = default)
         {
             var internalHandler = new Action<DateTime, string?, PhemexSpotTickerUpdate>((receiveTime, originalData, data) =>
             {
@@ -167,7 +167,7 @@ namespace Phemex.Net.Clients.SpotApi
         }
 
         /// <inheritdoc />
-        public async Task<CallResult<UpdateSubscription>> SubscribeToOrderBookUpdatesAsync(string symbol, bool fullBook, Action<DataEvent<PhemexOrderBook>> onMessage, CancellationToken ct = default)
+        public async Task<WebSocketResult<UpdateSubscription>> SubscribeToOrderBookUpdatesAsync(string symbol, bool fullBook, Action<DataEvent<PhemexOrderBook>> onMessage, CancellationToken ct = default)
         {
             var internalHandler = new Action<DateTime, string?, PhemexOrderBook>((receiveTime, originalData, data) =>
             {
@@ -193,7 +193,7 @@ namespace Phemex.Net.Clients.SpotApi
         }
 
         /// <inheritdoc />
-        public async Task<CallResult<UpdateSubscription>> SubscribeToWalletOrderUpdatesAsync(Action<DataEvent<PhemexWalletOrderUpdate>> onMessage, CancellationToken ct = default)
+        public async Task<WebSocketResult<UpdateSubscription>> SubscribeToWalletOrderUpdatesAsync(Action<DataEvent<PhemexWalletOrderUpdate>> onMessage, CancellationToken ct = default)
         {
             var internalHandler = new Action<DateTime, string?, PhemexWalletOrderUpdate>((receiveTime, originalData, data) =>
             {

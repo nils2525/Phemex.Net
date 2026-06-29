@@ -27,10 +27,17 @@ namespace Phemex.Net
                 "https://phemex.com/",
                 ["https://phemex-docs.github.io/#overview"],
                 PlatformType.CryptoCurrencyExchange,
-                CentralizationType.Centralized
+                CentralizationType.Centralized,
+                PhemexEnvironment.All
                 );
 
         internal static JsonSerializerOptions _serializerContext = SerializerOptions.WithConverters(JsonSerializerContextCache.GetOrCreate<PhemexSourceGenerationContext>());
+        internal static readonly ParameterSerializationSettings _parameterSerializationSettings = new()
+        {
+            Decimal = DecimalSerialization.String,
+            Array = ArrayParametersSerialization.MultipleValues,
+            Sort = false
+        };
 
         /// <summary>
         /// Aliases for Phemex assets

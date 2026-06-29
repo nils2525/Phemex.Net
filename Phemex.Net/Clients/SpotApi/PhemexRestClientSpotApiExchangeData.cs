@@ -20,38 +20,37 @@ namespace Phemex.Net.Clients.SpotApi
 
         #region Methods
         /// <inheritdoc />
-        public async Task<WebCallResult<PhemexProductData>> GetProductsAsync(CancellationToken ct = default)
+        public async Task<HttpResult<PhemexProductData>> GetProductsAsync(CancellationToken ct = default)
         {
             var request = _definitions.GetOrCreate(HttpMethod.Get, "/public/products", PhemexExchange.RateLimiter.PhemexRestIp, 1, false);
             return await _baseClient.SendDataAsync<PhemexProductData>(request, null, ct).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
-        public async Task<WebCallResult<PhemexProductData>> GetProductsPlusAsync(CancellationToken ct = default)
+        public async Task<HttpResult<PhemexProductData>> GetProductsPlusAsync(CancellationToken ct = default)
         {
             var request = _definitions.GetOrCreate(HttpMethod.Get, "/public/products-plus", PhemexExchange.RateLimiter.PhemexRestIp, 1, false);
             return await _baseClient.SendDataAsync<PhemexProductData>(request, null, ct).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
-        public async Task<WebCallResult<PhemexServerTime>> GetServerTimeAsync(CancellationToken ct = default)
+        public async Task<HttpResult<PhemexServerTime>> GetServerTimeAsync(CancellationToken ct = default)
         {
             var request = _definitions.GetOrCreate(HttpMethod.Get, "/public/time", PhemexExchange.RateLimiter.PhemexRestIp, 1, false);
             return await _baseClient.SendDataAsync<PhemexServerTime>(request, null, ct).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
-        public async Task<WebCallResult<PhemexTicker[]>> GetTickersAsync(CancellationToken ct = default)
+        public async Task<HttpResult<PhemexTicker[]>> GetTickersAsync(CancellationToken ct = default)
         {
             var request = _definitions.GetOrCreate(HttpMethod.Get, "/md/spot/ticker/24hr/all", PhemexExchange.RateLimiter.PhemexRestIp, 1, false);
             return await _baseClient.SendMarketAsync<PhemexTicker[]>(request, null, ct).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
-        public async Task<WebCallResult<PhemexTicker>> GetTickerAsync(string symbol, CancellationToken ct = default)
+        public async Task<HttpResult<PhemexTicker>> GetTickerAsync(string symbol, CancellationToken ct = default)
         {
-            var parameters = new ParameterCollection
-            {
+            var parameters = new Parameters(PhemexExchange._parameterSerializationSettings){
                 { "symbol", symbol }
             };
             var request = _definitions.GetOrCreate(HttpMethod.Get, "/md/spot/ticker/24hr", PhemexExchange.RateLimiter.PhemexRestIp, 1, false);
@@ -59,10 +58,9 @@ namespace Phemex.Net.Clients.SpotApi
         }
 
         /// <inheritdoc />
-        public async Task<WebCallResult<PhemexOrderBook>> GetOrderBookAsync(string symbol, CancellationToken ct = default)
+        public async Task<HttpResult<PhemexOrderBook>> GetOrderBookAsync(string symbol, CancellationToken ct = default)
         {
-            var parameters = new ParameterCollection
-            {
+            var parameters = new Parameters(PhemexExchange._parameterSerializationSettings){
                 { "symbol", symbol }
             };
             var request = _definitions.GetOrCreate(HttpMethod.Get, "/md/orderbook", PhemexExchange.RateLimiter.PhemexRestIp, 1, false);
@@ -70,10 +68,9 @@ namespace Phemex.Net.Clients.SpotApi
         }
 
         /// <inheritdoc />
-        public async Task<WebCallResult<PhemexOrderBook>> GetFullOrderBookAsync(string symbol, CancellationToken ct = default)
+        public async Task<HttpResult<PhemexOrderBook>> GetFullOrderBookAsync(string symbol, CancellationToken ct = default)
         {
-            var parameters = new ParameterCollection
-            {
+            var parameters = new Parameters(PhemexExchange._parameterSerializationSettings){
                 { "symbol", symbol }
             };
             var request = _definitions.GetOrCreate(HttpMethod.Get, "/md/fullbook", PhemexExchange.RateLimiter.PhemexRestIp, 1, false);
@@ -81,10 +78,9 @@ namespace Phemex.Net.Clients.SpotApi
         }
 
         /// <inheritdoc />
-        public async Task<WebCallResult<PhemexSpotTradeUpdate>> GetRecentTradesAsync(string symbol, CancellationToken ct = default)
+        public async Task<HttpResult<PhemexSpotTradeUpdate>> GetRecentTradesAsync(string symbol, CancellationToken ct = default)
         {
-            var parameters = new ParameterCollection
-            {
+            var parameters = new Parameters(PhemexExchange._parameterSerializationSettings){
                 { "symbol", symbol }
             };
             var request = _definitions.GetOrCreate(HttpMethod.Get, "/md/trade", PhemexExchange.RateLimiter.PhemexRestIp, 1, false);

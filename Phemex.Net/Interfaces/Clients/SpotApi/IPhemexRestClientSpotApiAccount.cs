@@ -23,7 +23,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// </summary>
         /// <param name="currency">["<c>currency</c>"] Optional asset filter</param>
         /// <param name="ct">Cancellation token</param>
-        Task<WebCallResult<PhemexWallet[]>> GetWalletsAsync(string? currency = null, CancellationToken ct = default);
+        Task<HttpResult<PhemexWallet[]>> GetWalletsAsync(string? currency = null, CancellationToken ct = default);
 
         /// <summary>
         /// Place a spot order
@@ -44,7 +44,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// <param name="clientOrderId">["<c>clOrdID</c>"] Client order id</param>
         /// <param name="timeInForce">["<c>timeInForce</c>"] Time in force</param>
         /// <param name="ct">Cancellation token</param>
-        Task<WebCallResult<PhemexOrder>> PlaceOrderAsync(
+        Task<HttpResult<PhemexOrder>> PlaceOrderAsync(
             string symbol,
             PhemexOrderSide side,
             PhemexOrderType orderType,
@@ -69,7 +69,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// <param name="orderId">["<c>orderID</c>"] Order id</param>
         /// <param name="clientOrderId">["<c>clOrdID</c>"] Client order id</param>
         /// <param name="ct">Cancellation token</param>
-        Task<WebCallResult<PhemexOrder>> CancelOrderAsync(string symbol, string? orderId = null, string? clientOrderId = null, CancellationToken ct = default);
+        Task<HttpResult<PhemexOrder>> CancelOrderAsync(string symbol, string? orderId = null, string? clientOrderId = null, CancellationToken ct = default);
 
         /// <summary>
         /// Get an open spot order
@@ -84,7 +84,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// <param name="orderId">["<c>orderID</c>"] Order id</param>
         /// <param name="clientOrderId">["<c>clOrdID</c>"] Client order id</param>
         /// <param name="ct">Cancellation token</param>
-        Task<WebCallResult<PhemexOrder>> GetOpenOrderAsync(string symbol, string? orderId = null, string? clientOrderId = null, CancellationToken ct = default);
+        Task<HttpResult<PhemexOrder>> GetOpenOrderAsync(string symbol, string? orderId = null, string? clientOrderId = null, CancellationToken ct = default);
 
         /// <summary>
         /// Get open spot orders by symbol
@@ -97,7 +97,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// </summary>
         /// <param name="symbol">["<c>symbol</c>"] Symbol</param>
         /// <param name="ct">Cancellation token</param>
-        Task<WebCallResult<PhemexOrder[]>> GetOpenOrdersAsync(string symbol, CancellationToken ct = default);
+        Task<HttpResult<PhemexOrder[]>> GetOpenOrdersAsync(string symbol, CancellationToken ct = default);
 
         /// <summary>
         /// Get order details by order id or client order id
@@ -112,7 +112,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// <param name="orderId">["<c>orderID</c>"] Order id</param>
         /// <param name="clientOrderId">["<c>clOrdID</c>"] Client order id</param>
         /// <param name="ct">Cancellation token</param>
-        Task<WebCallResult<PhemexOrder[]>> GetOrderAsync(string symbol, string? orderId = null, string? clientOrderId = null, CancellationToken ct = default);
+        Task<HttpResult<PhemexOrder[]>> GetOrderAsync(string symbol, string? orderId = null, string? clientOrderId = null, CancellationToken ct = default);
 
         /// <summary>
         /// Get order history
@@ -123,7 +123,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// GET /api-data/spots/orders
         /// </para>
         /// </summary>
-        Task<WebCallResult<PhemexOrder[]>> GetOrderHistoryAsync(string symbol, DateTime? startTime = null, DateTime? endTime = null, int? offset = null, int? limit = null, CancellationToken ct = default);
+        Task<HttpResult<PhemexOrder[]>> GetOrderHistoryAsync(string symbol, DateTime? startTime = null, DateTime? endTime = null, int? offset = null, int? limit = null, CancellationToken ct = default);
 
         /// <summary>
         /// Get trade history
@@ -134,7 +134,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// GET /api-data/spots/trades
         /// </para>
         /// </summary>
-        Task<WebCallResult<PhemexOrderTrade[]>> GetTradeHistoryAsync(string symbol, DateTime? startTime = null, DateTime? endTime = null, int? offset = null, int? limit = null, CancellationToken ct = default);
+        Task<HttpResult<PhemexOrderTrade[]>> GetTradeHistoryAsync(string symbol, DateTime? startTime = null, DateTime? endTime = null, int? offset = null, int? limit = null, CancellationToken ct = default);
 
         /// <summary>
         /// Get recent deposit history
@@ -145,7 +145,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// GET /exchange/wallets/depositList
         /// </para>
         /// </summary>
-        Task<WebCallResult<PhemexDeposit[]>> GetDepositHistoryAsync(string currency, int? offset = null, int? limit = null, CancellationToken ct = default);
+        Task<HttpResult<PhemexDeposit[]>> GetDepositHistoryAsync(string currency, int? offset = null, int? limit = null, CancellationToken ct = default);
 
         /// <summary>
         /// Get recent withdrawal history
@@ -156,7 +156,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// GET /exchange/wallets/withdrawList
         /// </para>
         /// </summary>
-        Task<WebCallResult<PhemexWithdrawal[]>> GetWithdrawalHistoryAsync(string currency, int? offset = null, int? limit = null, CancellationToken ct = default);
+        Task<HttpResult<PhemexWithdrawal[]>> GetWithdrawalHistoryAsync(string currency, int? offset = null, int? limit = null, CancellationToken ct = default);
 
         /// <summary>
         /// Get funds history
@@ -167,7 +167,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// GET /api-data/spots/funds
         /// </para>
         /// </summary>
-        Task<WebCallResult<PhemexFundsHistory>> GetFundsHistoryAsync(string currency, DateTime? startTime = null, DateTime? endTime = null, int? offset = null, int? limit = null, CancellationToken ct = default);
+        Task<HttpResult<PhemexFundsHistory>> GetFundsHistoryAsync(string currency, DateTime? startTime = null, DateTime? endTime = null, int? offset = null, int? limit = null, CancellationToken ct = default);
 
         /// <summary>
         /// Get fee rates by quote currency
@@ -178,6 +178,6 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// GET /api-data/spots/fee-rate
         /// </para>
         /// </summary>
-        Task<WebCallResult<PhemexFeeRates>> GetFeeRatesAsync(string quoteCurrency, CancellationToken ct = default);
+        Task<HttpResult<PhemexFeeRates>> GetFeeRatesAsync(string quoteCurrency, CancellationToken ct = default);
     }
 }

@@ -41,7 +41,7 @@ namespace Phemex.Net.Clients
         {
             Initialize(options.Value);
 
-            SpotApi = AddApiClient(new PhemexRestClientSpotApi(this, _logger, httpClient, options.Value));
+            SpotApi = AddApiClient(new PhemexRestClientSpotApi(this, loggerFactory, httpClient, options.Value));
         }
 
         #endregion

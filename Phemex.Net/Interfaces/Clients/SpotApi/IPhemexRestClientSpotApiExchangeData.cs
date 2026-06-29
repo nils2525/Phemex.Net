@@ -20,7 +20,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// </para>
         /// </summary>
         /// <param name="ct">Cancellation token</param>
-        Task<WebCallResult<PhemexProductData>> GetProductsAsync(CancellationToken ct = default);
+        Task<HttpResult<PhemexProductData>> GetProductsAsync(CancellationToken ct = default);
 
         /// <summary>
         /// Get extended product and currency information
@@ -32,7 +32,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// </para>
         /// </summary>
         /// <param name="ct">Cancellation token</param>
-        Task<WebCallResult<PhemexProductData>> GetProductsPlusAsync(CancellationToken ct = default);
+        Task<HttpResult<PhemexProductData>> GetProductsPlusAsync(CancellationToken ct = default);
 
         /// <summary>
         /// Get server time
@@ -44,7 +44,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// </para>
         /// </summary>
         /// <param name="ct">Cancellation token</param>
-        Task<WebCallResult<PhemexServerTime>> GetServerTimeAsync(CancellationToken ct = default);
+        Task<HttpResult<PhemexServerTime>> GetServerTimeAsync(CancellationToken ct = default);
 
         /// <summary>
         /// Get 24-hour spot ticker statistics for all symbols
@@ -56,7 +56,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// </para>
         /// </summary>
         /// <param name="ct">Cancellation token</param>
-        Task<WebCallResult<PhemexTicker[]>> GetTickersAsync(CancellationToken ct = default);
+        Task<HttpResult<PhemexTicker[]>> GetTickersAsync(CancellationToken ct = default);
 
         /// <summary>
         /// Get 24-hour spot ticker statistics for a symbol
@@ -69,7 +69,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// </summary>
         /// <param name="symbol">["<c>symbol</c>"] The symbol, for example <c>sBTCUSDT</c></param>
         /// <param name="ct">Cancellation token</param>
-        Task<WebCallResult<PhemexTicker>> GetTickerAsync(string symbol, CancellationToken ct = default);
+        Task<HttpResult<PhemexTicker>> GetTickerAsync(string symbol, CancellationToken ct = default);
 
         /// <summary>
         /// Get order book snapshot
@@ -82,7 +82,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// </summary>
         /// <param name="symbol">["<c>symbol</c>"] The symbol, for example <c>sBTCUSDT</c></param>
         /// <param name="ct">Cancellation token</param>
-        Task<WebCallResult<PhemexOrderBook>> GetOrderBookAsync(string symbol, CancellationToken ct = default);
+        Task<HttpResult<PhemexOrderBook>> GetOrderBookAsync(string symbol, CancellationToken ct = default);
 
         /// <summary>
         /// Get full order book snapshot
@@ -95,7 +95,7 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// </summary>
         /// <param name="symbol">["<c>symbol</c>"] The symbol, for example <c>sBTCUSDT</c></param>
         /// <param name="ct">Cancellation token</param>
-        Task<WebCallResult<PhemexOrderBook>> GetFullOrderBookAsync(string symbol, CancellationToken ct = default);
+        Task<HttpResult<PhemexOrderBook>> GetFullOrderBookAsync(string symbol, CancellationToken ct = default);
 
         /// <summary>
         /// Get recent trades
@@ -108,6 +108,6 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// </summary>
         /// <param name="symbol">["<c>symbol</c>"] The symbol, for example <c>sBTCUSDT</c></param>
         /// <param name="ct">Cancellation token</param>
-        Task<WebCallResult<PhemexSpotTradeUpdate>> GetRecentTradesAsync(string symbol, CancellationToken ct = default);
+        Task<HttpResult<PhemexSpotTradeUpdate>> GetRecentTradesAsync(string symbol, CancellationToken ct = default);
     }
 }

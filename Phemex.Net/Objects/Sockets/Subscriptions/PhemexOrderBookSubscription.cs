@@ -69,7 +69,7 @@ namespace Phemex.Net.Objects.Sockets.Subscriptions
 
                         var result = await connection.SendAndWaitQueryAsync(resubQuery).ConfigureAwait(false);
                         survivor.HandleSubQueryResponse(connection, resubQuery.Response);
-                        if (!result)
+                        if (!result.Success)
                             _logger.LogWarning(
                                 "[Sckt {SocketId}] failed to resubscribe orderbook survivor {SubId}: {Error}",
                                 connection.SocketId, survivor.Id, result.Error);

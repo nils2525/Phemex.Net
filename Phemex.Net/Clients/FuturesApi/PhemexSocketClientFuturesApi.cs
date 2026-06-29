@@ -32,8 +32,8 @@ namespace Phemex.Net.Clients.FuturesApi
     internal partial class PhemexSocketClientFuturesApi : SocketApiClient<PhemexEnvironment, PhemexAuthenticationProvider, PhemexCredentials>, IPhemexSocketClientFuturesApi
     {
         #region Constructors
-        internal PhemexSocketClientFuturesApi(PhemexSocketClient baseClient, ILogger logger, PhemexSocketOptions options) :
-            base(logger, options.Environment.SocketClientSpotAddress, options, options.FuturesOptions)
+        internal PhemexSocketClientFuturesApi(PhemexSocketClient baseClient, ILoggerFactory? loggerFactory, PhemexSocketOptions options) :
+            base(loggerFactory, PhemexExchange.Metadata.Id, options.Environment.SocketClientSpotAddress, options, options.FuturesOptions)
         {
             RateLimiter = PhemexExchange.RateLimiter.PhemexSocket;
             KeepAliveInterval = TimeSpan.Zero;
@@ -110,7 +110,7 @@ namespace Phemex.Net.Clients.FuturesApi
             => new PhemexAuthenticationProvider(credentials);
 
         /// <inheritdoc />
-        public async Task<CallResult<UpdateSubscription>> SubscribeToTradeUpdatesAsync(string symbol, Action<DataEvent<PhemexFutureTradeUpdate>> onMessage, CancellationToken ct = default)
+        public async Task<WebSocketResult<UpdateSubscription>> SubscribeToTradeUpdatesAsync(string symbol, Action<DataEvent<PhemexFutureTradeUpdate>> onMessage, CancellationToken ct = default)
         {
             var internalHandler = new Action<DateTime, string?, PhemexFutureTradeUpdate>((receiveTime, originalData, data) =>
             {

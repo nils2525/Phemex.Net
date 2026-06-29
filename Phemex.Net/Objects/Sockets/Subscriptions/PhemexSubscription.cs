@@ -36,8 +36,8 @@ namespace Phemex.Net.Objects.Sockets.Subscriptions
             _parameters = parameters;
 
             MessageRouter = topicFilter == null
-                ? MessageRouter.CreateWithoutTopicFilter<T>(routeIdentifier, DoHandleMessage)
-                : MessageRouter.CreateWithTopicFilter<T>(routeIdentifier, topicFilter, DoHandleMessage);
+                ? MessageRouter.CreateForEvent<T>(routeIdentifier, DoHandleMessage)
+                : MessageRouter.CreateForEvent<T>(routeIdentifier, topicFilter, DoHandleMessage);
         }
 
         /// <inheritdoc />
@@ -62,7 +62,7 @@ namespace Phemex.Net.Objects.Sockets.Subscriptions
         public CallResult DoHandleMessage(SocketConnection connection, DateTime receiveTime, string? originalData, T message)
         {
             _handler.Invoke(receiveTime, originalData, message);
-            return new CallResult(null);
+            return CallResult.Ok();
         }
     }
 }

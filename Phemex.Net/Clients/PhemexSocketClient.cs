@@ -43,8 +43,8 @@ namespace Phemex.Net.Clients
         {
             Initialize(options.Value);
 
-            SpotApi = AddApiClient(new PhemexSocketClientSpotApi(this, _logger, options.Value));
-            FuturesApi = AddApiClient(new PhemexSocketClientFuturesApi(this, _logger, options.Value));
+            SpotApi = AddApiClient(new PhemexSocketClientSpotApi(this, loggerFactory, options.Value));
+            FuturesApi = AddApiClient(new PhemexSocketClientFuturesApi(this, loggerFactory, options.Value));
         }
 
         #endregion

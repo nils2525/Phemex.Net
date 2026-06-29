@@ -13,15 +13,15 @@ namespace Phemex.Net.Objects.Sockets
     {
         public PhemexQuery(PhemexSocketRequest request, bool authenticated, int weight = 1) : base(request, authenticated, weight)
         {
-            MessageRouter = MessageRouter.CreateWithoutTopicFilter<PhemexSocketResponse>(request.Id.ToString(), HandleMessage);
+            MessageRouter = MessageRouter.CreateForQuery<PhemexSocketResponse>(request.Id.ToString(), HandleMessage);
         }
 
         public CallResult<PhemexSocketResponse> HandleMessage(SocketConnection connection, DateTime receiveTime, string? originalData, PhemexSocketResponse message)
         {
             if (message.Error != null && message.Error.Value.ValueKind is not JsonValueKind.Null and not JsonValueKind.Undefined)
-                return new CallResult<PhemexSocketResponse>(ParseError(message.Error.Value));
+                return CallResult.Fail<PhemexSocketResponse>(ParseError(message.Error.Value));
 
-            return new CallResult<PhemexSocketResponse>(message, originalData, null);
+            return CallResult.Ok(message, originalData);
         }
 
         private static ServerError ParseError(JsonElement error)

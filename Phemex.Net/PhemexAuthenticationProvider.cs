@@ -23,14 +23,14 @@ namespace Phemex.Net
 
         public override void ProcessRequest(RestApiClient apiClient, RestRequestConfiguration requestConfig)
         {
-            if (!requestConfig.Authenticated)
+            if (!requestConfig.RequestDefinition.Authenticated)
                 return;
 
             var expiry = DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 60;
             var queryString = requestConfig.GetQueryString(false);
             requestConfig.SetQueryString(queryString);
 
-            var signString = requestConfig.Path + queryString + expiry;
+            var signString = requestConfig.RequestDefinition.Path + queryString + expiry;
             if (requestConfig.BodyParameters != null)
             {
                 var body = GetSerializedBody(_messageSerializer, requestConfig.BodyParameters);
