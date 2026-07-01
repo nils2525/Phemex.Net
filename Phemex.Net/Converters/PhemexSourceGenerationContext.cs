@@ -5,6 +5,7 @@ using Phemex.Net.Objects.Sockets;
 using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CryptoExchange.Net.Objects;
 
 namespace Phemex.Net.Converters
 {
@@ -68,6 +69,7 @@ namespace Phemex.Net.Converters
     [JsonSerializable(typeof(decimal?))]
     [JsonSerializable(typeof(DateTime))]
     [JsonSerializable(typeof(DateTime?))]
+    [JsonSerializable(typeof(Parameters))]
     internal partial class PhemexSourceGenerationContext : JsonSerializerContext
     {
     }
