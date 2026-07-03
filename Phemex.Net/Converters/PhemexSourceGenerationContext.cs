@@ -3,6 +3,7 @@ using Phemex.Net.Objects.Internal;
 using Phemex.Net.Objects.Models;
 using Phemex.Net.Objects.Sockets;
 using System;
+using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using CryptoExchange.Net.Objects;
@@ -19,6 +20,9 @@ namespace Phemex.Net.Converters
     [JsonSerializable(typeof(PhemexDataResult<PhemexOrderTrade[]>))]
     [JsonSerializable(typeof(PhemexDataResult<PhemexDeposit[]>))]
     [JsonSerializable(typeof(PhemexDataResult<PhemexWithdrawal[]>))]
+    [JsonSerializable(typeof(PhemexDataResult<Dictionary<string, PhemexChainSetting[]>>))]
+    [JsonSerializable(typeof(PhemexDataResult<PhemexDepositChainSetting[]>))]
+    [JsonSerializable(typeof(PhemexDataResult<PhemexWithdrawChainSettings>))]
     [JsonSerializable(typeof(PhemexDataResult<PhemexFundsHistory>))]
     [JsonSerializable(typeof(PhemexDataResult<PhemexFeeRates>))]
     [JsonSerializable(typeof(PhemexMarketResult<PhemexTicker[]>))]
@@ -37,6 +41,10 @@ namespace Phemex.Net.Converters
     [JsonSerializable(typeof(PhemexOrderTrade))]
     [JsonSerializable(typeof(PhemexDeposit))]
     [JsonSerializable(typeof(PhemexWithdrawal))]
+    [JsonSerializable(typeof(PhemexChainSetting))]
+    [JsonSerializable(typeof(PhemexDepositChainSetting))]
+    [JsonSerializable(typeof(PhemexWithdrawChainSettings))]
+    [JsonSerializable(typeof(PhemexWithdrawChainInfo))]
     [JsonSerializable(typeof(PhemexFundsHistory))]
     [JsonSerializable(typeof(PhemexRows<PhemexOrder>))]
     [JsonSerializable(typeof(PhemexRows<PhemexOrderTrade>))]

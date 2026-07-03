@@ -1,5 +1,6 @@
 using CryptoExchange.Net.Objects;
 using Phemex.Net.Objects.Models;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -33,6 +34,19 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         /// </summary>
         /// <param name="ct">Cancellation token</param>
         Task<HttpResult<PhemexProductData>> GetProductsPlusAsync(CancellationToken ct = default);
+
+        /// <summary>
+        /// Get public chain settings
+        /// <para>
+        /// Docs:<br />
+        /// <a href="https://phemex-docs.github.io/#query-chain-information" /><br />
+        /// Endpoint:<br />
+        /// GET /exchange/public/cfg/chain-settings
+        /// </para>
+        /// </summary>
+        /// <param name="currency">["<c>currency</c>"] Optional asset filter</param>
+        /// <param name="ct">Cancellation token</param>
+        Task<HttpResult<Dictionary<string, PhemexChainSetting[]>>> GetChainSettingsAsync(string? currency = null, CancellationToken ct = default);
 
         /// <summary>
         /// Get server time

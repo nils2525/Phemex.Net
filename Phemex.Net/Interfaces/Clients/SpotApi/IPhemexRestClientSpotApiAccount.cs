@@ -159,6 +159,33 @@ namespace Phemex.Net.Interfaces.Clients.SpotApi
         Task<HttpResult<PhemexWithdrawal[]>> GetWithdrawalHistoryAsync(string currency, int? offset = null, int? limit = null, CancellationToken ct = default);
 
         /// <summary>
+        /// Get deposit chain settings
+        /// <para>
+        /// Docs:<br />
+        /// <a href="https://phemex-docs.github.io/#query-deposit-chain-settings" /><br />
+        /// Endpoint:<br />
+        /// GET /phemex-deposit/wallets/api/chainCfg
+        /// </para>
+        /// </summary>
+        /// <param name="currency">["<c>currency</c>"] Asset</param>
+        /// <param name="ct">Cancellation token</param>
+        Task<HttpResult<PhemexDepositChainSetting[]>> GetDepositChainSettingsAsync(string currency, CancellationToken ct = default);
+
+        /// <summary>
+        /// Get withdraw chain settings
+        /// <para>
+        /// Docs:<br />
+        /// <a href="https://phemex-docs.github.io/#query-withdraw-chain-settings" /><br />
+        /// Endpoint:<br />
+        /// GET /phemex-withdraw/wallets/api/asset/info
+        /// </para>
+        /// </summary>
+        /// <param name="currency">["<c>currency</c>"] Optional asset filter</param>
+        /// <param name="amount">["<c>amount</c>"] Optional withdrawal amount including fee</param>
+        /// <param name="ct">Cancellation token</param>
+        Task<HttpResult<PhemexWithdrawChainSettings>> GetWithdrawChainSettingsAsync(string? currency = null, decimal? amount = null, CancellationToken ct = default);
+
+        /// <summary>
         /// Get funds history
         /// <para>
         /// Docs:<br />

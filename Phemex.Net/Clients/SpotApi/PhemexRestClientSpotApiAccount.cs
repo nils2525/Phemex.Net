@@ -164,6 +164,28 @@ namespace Phemex.Net.Clients.SpotApi
         }
 
         /// <inheritdoc />
+        public async Task<HttpResult<PhemexDepositChainSetting[]>> GetDepositChainSettingsAsync(string currency, CancellationToken ct = default)
+        {
+            var parameters = new Parameters(PhemexExchange._parameterSerializationSettings){
+                { "currency", currency }
+            };
+
+            var request = _definitions.GetOrCreate(HttpMethod.Get, "/phemex-deposit/wallets/api/chainCfg", PhemexExchange.RateLimiter.PhemexRestIp, 1, true);
+            return await _baseClient.SendDataAsync<PhemexDepositChainSetting[]>(request, parameters, ct).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
+        public async Task<HttpResult<PhemexWithdrawChainSettings>> GetWithdrawChainSettingsAsync(string? currency = null, decimal? amount = null, CancellationToken ct = default)
+        {
+            var parameters = new Parameters(PhemexExchange._parameterSerializationSettings);
+            parameters.AddOptional("currency", currency);
+            parameters.AddOptional("amount", amount);
+
+            var request = _definitions.GetOrCreate(HttpMethod.Get, "/phemex-withdraw/wallets/api/asset/info", PhemexExchange.RateLimiter.PhemexRestIp, 1, true);
+            return await _baseClient.SendDataAsync<PhemexWithdrawChainSettings>(request, parameters, ct).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
         public async Task<HttpResult<PhemexFundsHistory>> GetFundsHistoryAsync(string currency, DateTime? startTime = null, DateTime? endTime = null, int? offset = null, int? limit = null, CancellationToken ct = default)
         {
             var parameters = new Parameters(PhemexExchange._parameterSerializationSettings){

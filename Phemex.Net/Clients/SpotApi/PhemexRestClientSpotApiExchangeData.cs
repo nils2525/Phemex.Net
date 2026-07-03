@@ -1,6 +1,7 @@
 using CryptoExchange.Net.Objects;
 using Phemex.Net.Interfaces.Clients.SpotApi;
 using Phemex.Net.Objects.Models;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -31,6 +32,16 @@ namespace Phemex.Net.Clients.SpotApi
         {
             var request = _definitions.GetOrCreate(HttpMethod.Get, "/public/products-plus", PhemexExchange.RateLimiter.PhemexRestIp, 1, false);
             return await _baseClient.SendDataAsync<PhemexProductData>(request, null, ct).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
+        public async Task<HttpResult<Dictionary<string, PhemexChainSetting[]>>> GetChainSettingsAsync(string? currency = null, CancellationToken ct = default)
+        {
+            var parameters = new Parameters(PhemexExchange._parameterSerializationSettings);
+            parameters.AddOptional("currency", currency);
+
+            var request = _definitions.GetOrCreate(HttpMethod.Get, "/exchange/public/cfg/chain-settings", PhemexExchange.RateLimiter.PhemexRestIp, 1, false);
+            return await _baseClient.SendDataAsync<Dictionary<string, PhemexChainSetting[]>>(request, parameters, ct).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
