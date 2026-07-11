@@ -136,6 +136,34 @@ namespace Phemex.Net.Clients.FuturesApi
             var subscription = new PhemexSubscription<PhemexFutureTradeUpdate>(_logger, "trade_p.subscribe", "trade_p.unsubscribe", [symbol], "trades_p", symbol, internalHandler, false);
             return await SubscribeAsync(BaseAddress, subscription, ct).ConfigureAwait(false);
         }
+
+        /// <inheritdoc />
+        public async Task<WebSocketResult<UpdateSubscription>> SubscribeToAllTickerUpdatesAsync(Action<DataEvent<PhemexFutureTickerPackUpdate>> onMessage, CancellationToken ct = default)
+        {
+            var internalHandler = new Action<DateTime, string?, PhemexFutureTickerPackUpdate>((receiveTime, originalData, data) =>
+            {
+                var timestamp = data.Timestamp == default ? receiveTime : data.Timestamp;
+                UpdateTimeOffset(timestamp);
+
+                onMessage(
+                    new DataEvent<PhemexFutureTickerPackUpdate>(PhemexExchange.Metadata.Id, data, receiveTime, originalData)
+                        .WithUpdateType(data.Type == PhemexUpdateType.Snapshot ? SocketUpdateType.Snapshot : SocketUpdateType.Update)
+                        .WithStreamId(data.Method)
+                        .WithDataTimestamp(timestamp, GetTimeOffset())
+                    );
+            });
+
+            var subscription = new PhemexSubscription<PhemexFutureTickerPackUpdate>(
+                _logger,
+                "perp_market24h_pack_p.subscribe",
+                "perp_market24h_pack_p.unsubscribe",
+                [],
+                "perp_market24h_pack_p.update",
+                null,
+                internalHandler,
+                false);
+            return await SubscribeAsync(BaseAddress, subscription, ct).ConfigureAwait(false);
+        }
         #endregion
     }
 }

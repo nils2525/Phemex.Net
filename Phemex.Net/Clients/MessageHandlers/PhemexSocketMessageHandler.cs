@@ -9,6 +9,7 @@ namespace Phemex.Net.Clients.MessageHandlers
     {
         public override JsonSerializerOptions Options { get; } = PhemexExchange._serializerContext;
 
+        /// <summary>Initializes Phemex topic routing for socket messages.</summary>
         public PhemexSocketMessageHandler()
         {
             AddTopicMapping<PhemexOrderBook>(x => x.Symbol);
@@ -16,6 +17,7 @@ namespace Phemex.Net.Clients.MessageHandlers
             AddTopicMapping<PhemexFutureTradeUpdate>(x => x.Symbol);
         }
 
+        /// <inheritdoc />
         protected override MessageTypeDefinition[] TypeEvaluators { get; } = [
             new MessageTypeDefinition {
                 Fields = [
@@ -52,6 +54,12 @@ namespace Phemex.Net.Clients.MessageHandlers
                     new PropertyFieldReference("trades_p"),
                 ],
                 TypeIdentifierCallback = x => "trades_p",
+            },
+            new MessageTypeDefinition {
+                Fields = [
+                    new PropertyFieldReference("method").WithEqualConstraint("perp_market24h_pack_p.update"),
+                ],
+                StaticIdentifier = "perp_market24h_pack_p.update",
             },
             new MessageTypeDefinition {
                 Fields = [
