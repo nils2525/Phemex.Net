@@ -9,6 +9,9 @@ namespace Phemex.Net.Objects.Models
     /// </summary>
     public record PhemexProduct
     {
+        /// <summary>[<c>maxLeverage</c>] Maximum leverage for the perpetual contract.</summary>
+        [JsonPropertyName("maxLeverage")]
+        public decimal? MaxLeverage { get; set; }
         /// <summary>
         /// ["<c>symbol</c>"] Symbol
         /// </summary>

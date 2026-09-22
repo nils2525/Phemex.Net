@@ -10,6 +10,18 @@ using CryptoExchange.Net.Objects;
 
 namespace Phemex.Net.Converters
 {
+    [JsonSerializable(typeof(PhemexDataResult<PhemexFuturesAccountPositions>))]
+    [JsonSerializable(typeof(PhemexDataResult<PhemexFuturesOrder>))]
+    [JsonSerializable(typeof(PhemexDataResult<PhemexRows<PhemexFuturesOrder>>))]
+    [JsonSerializable(typeof(PhemexDataResult<PhemexRows<PhemexFuturesHistoryOrder>>))]
+    [JsonSerializable(typeof(PhemexDataResult<PhemexRows<PhemexFuturesTrade>>))]
+    [JsonSerializable(typeof(PhemexDataResult<PhemexRows<PhemexFundingRate>>))]
+    [JsonSerializable(typeof(PhemexDataResult<PhemexRows<PhemexFundingFee>>))]
+    [JsonSerializable(typeof(PhemexDataResult<PhemexWalletTransfer>))]
+    [JsonSerializable(typeof(PhemexDataResult<string>))]
+    [JsonSerializable(typeof(PhemexMarketResult<PhemexFuturesTicker>))]
+    [JsonSerializable(typeof(PhemexFuturesAccountUpdate))]
+    [JsonSerializable(typeof(PhemexFuturesOrderBook))]
     [JsonSerializable(typeof(PhemexDataResult<PhemexProductData>))]
     [JsonSerializable(typeof(PhemexDataResult<PhemexServerTime>))]
     [JsonSerializable(typeof(PhemexDataResult<PhemexWallet[]>))]

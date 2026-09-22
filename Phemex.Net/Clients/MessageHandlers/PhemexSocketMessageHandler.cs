@@ -15,10 +15,15 @@ namespace Phemex.Net.Clients.MessageHandlers
             AddTopicMapping<PhemexOrderBook>(x => x.Symbol);
             AddTopicMapping<PhemexSpotTradeUpdate>(x => x.Symbol);
             AddTopicMapping<PhemexFutureTradeUpdate>(x => x.Symbol);
+            AddTopicMapping<PhemexFuturesOrderBook>(x => x.Symbol);
         }
 
         /// <inheritdoc />
         protected override MessageTypeDefinition[] TypeEvaluators { get; } = [
+            new MessageTypeDefinition { Fields = [new PropertyFieldReference("orderbook_p")], StaticIdentifier = "orderbook_p" },
+            new MessageTypeDefinition { Fields = [new PropertyFieldReference("accounts_p")], StaticIdentifier = "aop_p" },
+            new MessageTypeDefinition { Fields = [new PropertyFieldReference("orders_p")], StaticIdentifier = "aop_p" },
+            new MessageTypeDefinition { Fields = [new PropertyFieldReference("positions_p")], StaticIdentifier = "aop_p" },
             new MessageTypeDefinition {
                 Fields = [
                     new PropertyFieldReference("id"),

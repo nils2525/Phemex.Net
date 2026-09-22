@@ -109,11 +109,22 @@ namespace Phemex.Net
 
         private void Initialize()
         {
-            PhemexRestIp = new RateLimitGate("Phemex IP")
-                .AddGuard(new RateLimitGuard(RateLimitGuard.PerHost, new LimitItemTypeFilter(RateLimitItemType.Request), 5000, TimeSpan.FromMinutes(5), RateLimitWindowType.Sliding));
+            var ipGuard = new RateLimitGuard(RateLimitGuard.PerHost, new LimitItemTypeFilter(RateLimitItemType.Request), 5000, TimeSpan.FromMinutes(5), RateLimitWindowType.Sliding, shared: true);
+            PhemexRestIp = new RateLimitGate("Phemex IP").AddGuard(ipGuard);
             PhemexSocket = new RateLimitGate("Phemex Socket")
                 .AddGuard(new RateLimitGuard(RateLimitGuard.PerHost, new LimitItemTypeFilter(RateLimitItemType.Connection), 200, TimeSpan.FromMinutes(5), RateLimitWindowType.Sliding))
                 .AddGuard(new RateLimitGuard(RateLimitGuard.PerConnection, new LimitItemTypeFilter(RateLimitItemType.Request), 20, TimeSpan.FromSeconds(1), RateLimitWindowType.Sliding));
+
+            PhemexRestContract = new RateLimitGate("Phemex Contract")
+                .AddGuard(ipGuard)
+                .AddGuard(new RateLimitGuard(RateLimitGuard.PerApiKey, new LimitItemTypeFilter(RateLimitItemType.Request), 500, TimeSpan.FromMinutes(1), RateLimitWindowType.Sliding));
+            PhemexRestOther = new RateLimitGate("Phemex Others")
+                .AddGuard(ipGuard)
+                .AddGuard(new RateLimitGuard(RateLimitGuard.PerApiKey, new LimitItemTypeFilter(RateLimitItemType.Request), 100, TimeSpan.FromMinutes(1), RateLimitWindowType.Sliding));
+            PhemexRestContract.RateLimitTriggered += x => RateLimitTriggered?.Invoke(x);
+            PhemexRestContract.RateLimitUpdated += x => RateLimitUpdated?.Invoke(x);
+            PhemexRestOther.RateLimitTriggered += x => RateLimitTriggered?.Invoke(x);
+            PhemexRestOther.RateLimitUpdated += x => RateLimitUpdated?.Invoke(x);
 
             PhemexRestIp.RateLimitTriggered += x => RateLimitTriggered?.Invoke(x);
             PhemexRestIp.RateLimitUpdated += x => RateLimitUpdated?.Invoke(x);
@@ -122,6 +133,10 @@ namespace Phemex.Net
         }
 
         internal IRateLimitGate PhemexSocket { get; private set; } = null!;
+        /// <summary>Authenticated contract request budget.</summary>
+        internal IRateLimitGate PhemexRestContract { get; private set; } = null!;
+        /// <summary>Non-trading endpoint request budget.</summary>
+        internal IRateLimitGate PhemexRestOther { get; private set; } = null!;
         internal IRateLimitGate PhemexRestIp { get; private set; } = null!;
     }
 }

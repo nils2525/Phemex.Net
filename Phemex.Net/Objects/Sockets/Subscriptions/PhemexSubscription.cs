@@ -16,6 +16,7 @@ namespace Phemex.Net.Objects.Sockets.Subscriptions
         private readonly object[] _parameters;
         private readonly string _method;
         private readonly string _unsubscribeMethod;
+        private readonly object[]? _unsubscribeParameters;
 
         /// <summary>
         /// ctor
@@ -28,12 +29,13 @@ namespace Phemex.Net.Objects.Sockets.Subscriptions
             string routeIdentifier,
             string? topicFilter,
             Action<DateTime, string?, T> handler,
-            bool auth) : base(logger, auth)
+            bool auth, object[]? unsubscribeParameters = null) : base(logger, auth)
         {
             _handler = handler;
             _method = method;
             _unsubscribeMethod = unsubscribeMethod;
             _parameters = parameters;
+            _unsubscribeParameters = unsubscribeParameters;
 
             MessageRouter = topicFilter == null
                 ? MessageRouter.CreateForEvent<T>(routeIdentifier, DoHandleMessage)
@@ -55,7 +57,7 @@ namespace Phemex.Net.Objects.Sockets.Subscriptions
             {
                 Id = ExchangeHelpers.NextId(),
                 Method = _unsubscribeMethod,
-                Parameters = _parameters
+                Parameters = _unsubscribeParameters ?? _parameters
             }, Authenticated);
 
         /// <inheritdoc />

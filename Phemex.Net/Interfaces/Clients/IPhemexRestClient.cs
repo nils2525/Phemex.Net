@@ -1,5 +1,6 @@
 using CryptoExchange.Net.Interfaces.Clients;
 using Phemex.Net.Interfaces.Clients.SpotApi;
+using Phemex.Net.Interfaces.Clients.FuturesApi;
 
 namespace Phemex.Net.Interfaces.Clients
 {
@@ -13,5 +14,8 @@ namespace Phemex.Net.Interfaces.Clients
         /// </summary>
         /// <see cref="IPhemexRestClientSpotApi"/>
         public IPhemexRestClientSpotApi SpotApi { get; }
+
+        /// <summary>USD-margined perpetual endpoints.</summary>
+        IPhemexRestClientFuturesApi FuturesApi { get; }
     }
 }

@@ -13,11 +13,17 @@ namespace Phemex.Net.Interfaces.Clients.FuturesApi
     /// </summary>
     public interface IPhemexSocketClientFuturesApi : ISocketApiClient<PhemexCredentials>, IDisposable
     {
+        /// <summary>Subscribes to the account-wide USD-margined stream. <see href="https://phemex-docs.github.io/#subscribe-account-order-position-aop-2" />.</summary>
+        Task<WebSocketResult<UpdateSubscription>> SubscribeToAccountUpdatesAsync(Action<DataEvent<PhemexFuturesAccountUpdate>> onMessage, CancellationToken ct = default);
+
+        /// <summary>Subscribes to full-depth USD-margined books. <see href="https://phemex-docs.github.io/#subscribe-orderbook-with-depth-2" />.</summary>
+        Task<WebSocketResult<UpdateSubscription>> SubscribeToOrderBookUpdatesAsync(string symbol, Action<DataEvent<PhemexFuturesOrderBook>> onMessage, CancellationToken ct = default);
+
         /// <summary>
         /// Subscribe to USDT/USDC-margined perpetual trade updates
         /// <para>
         /// Docs:<br />
-        /// <a href="https://phemex-docs.github.io/#subscribe-trade-4" /><br />
+        /// <a href="https://phemex-docs.github.io/#subscribe-trade-2" /><br />
         /// Endpoint:<br />
         /// wss://ws.phemex.com (method: trade_p.subscribe)
         /// </para>
@@ -32,7 +38,7 @@ namespace Phemex.Net.Interfaces.Clients.FuturesApi
         /// Subscribe to packed 24-hour ticker updates for all USD-margined perpetual symbols.
         /// <para>
         /// Docs:<br />
-        /// <a href="https://phemex-docs.github.io/#subscribe-24-hours-ticker" /><br />
+        /// <a href="https://phemex-docs.github.io/#subscribe-24-hours-ticker-2" /><br />
         /// Endpoint:<br />
         /// wss://ws.phemex.com (method: perp_market24h_pack_p.subscribe)
         /// </para>

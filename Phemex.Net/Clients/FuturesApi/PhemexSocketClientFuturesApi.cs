@@ -61,20 +61,6 @@ namespace Phemex.Net.Clients.FuturesApi
         #endregion
 
         #region Methods
-        /// <inheritdoc />
-        protected override IMessageSerializer CreateSerializer() => new SystemTextJsonMessageSerializer(PhemexExchange._serializerContext);
-        /// <inheritdoc />
-        public override ISocketMessageHandler CreateMessageConverter(WebSocketMessageType messageType) => new PhemexSocketMessageHandler();
-
-        /// <inheritdoc />
-        protected override bool HandleUnhandledMessage(SocketConnection connection, string typeIdentifier, ReadOnlySpan<byte> data)
-        {
-            if (IsSuccessAcknowledgement(data))
-                return true;
-
-            return base.HandleUnhandledMessage(connection, typeIdentifier, data);
-        }
-
         private static bool IsSuccessAcknowledgement(ReadOnlySpan<byte> data)
         {
             try
@@ -102,12 +88,55 @@ namespace Phemex.Net.Clients.FuturesApi
         }
 
         /// <inheritdoc />
-        public override string FormatSymbol(string baseAsset, string quoteAsset, TradingMode tradingMode, DateTime? deliverDate = null)
-            => PhemexExchange.FormatSymbol(baseAsset, quoteAsset, tradingMode, deliverDate);
+        protected override IMessageSerializer CreateSerializer() => new SystemTextJsonMessageSerializer(PhemexExchange._serializerContext);
+        /// <inheritdoc />
+        protected override bool ConnectionCanBeUsedFor(SocketConnection connection, string address, bool authenticated, string? topic = null)
+            => base.ConnectionCanBeUsedFor(connection, address, authenticated, topic)
+                && (topic != "orderbook_p" || !connection.Topics.Contains(topic));
+
+        /// <inheritdoc />
+        protected override bool HandleUnhandledMessage(SocketConnection connection, string typeIdentifier, ReadOnlySpan<byte> data)
+        {
+            if (IsSuccessAcknowledgement(data))
+                return true;
+
+            return base.HandleUnhandledMessage(connection, typeIdentifier, data);
+        }
 
         /// <inheritdoc />
         protected override PhemexAuthenticationProvider CreateAuthenticationProvider(PhemexCredentials credentials)
             => new PhemexAuthenticationProvider(credentials);
+
+        /// <inheritdoc />
+        public override ISocketMessageHandler CreateMessageConverter(WebSocketMessageType messageType) => new PhemexSocketMessageHandler();
+
+        /// <inheritdoc />
+        public override string FormatSymbol(string baseAsset, string quoteAsset, TradingMode tradingMode, DateTime? deliverDate = null)
+            => PhemexExchange.FormatSymbol(baseAsset, quoteAsset, tradingMode, deliverDate);
+
+        /// <inheritdoc />
+        public Task<WebSocketResult<UpdateSubscription>> SubscribeToAccountUpdatesAsync(Action<DataEvent<PhemexFuturesAccountUpdate>> onMessage, CancellationToken ct = default)
+        {
+            var subscription = new PhemexSubscription<PhemexFuturesAccountUpdate>(_logger, "aop_p.subscribe", "aop_p.unsubscribe", [], "aop_p", null,
+                (received, original, data) => onMessage(new DataEvent<PhemexFuturesAccountUpdate>(PhemexExchange.Metadata.Id, data, received, original)
+                    .WithUpdateType(data.Type == PhemexUpdateType.Snapshot ? SocketUpdateType.Snapshot : SocketUpdateType.Update)
+                    .WithDataTimestamp(PhemexExchange.ConvertNanosecondsToDateTime(data.TimestampNs), GetTimeOffset())), true);
+            return SubscribeAsync(BaseAddress, subscription, ct);
+        }
+
+        /// <inheritdoc />
+        public Task<WebSocketResult<UpdateSubscription>> SubscribeToOrderBookUpdatesAsync(string symbol, Action<DataEvent<PhemexFuturesOrderBook>> onMessage, CancellationToken ct = default)
+        {
+            var subscription = new PhemexSubscription<PhemexFuturesOrderBook>(_logger, "orderbook_p.subscribe", "orderbook_p.unsubscribe", [symbol, false, 0], "orderbook_p", symbol,
+                (received, original, data) => onMessage(new DataEvent<PhemexFuturesOrderBook>(PhemexExchange.Metadata.Id, data, received, original)
+                    .WithSymbol(data.Symbol)
+                    .WithUpdateType(data.Type == PhemexUpdateType.Snapshot ? SocketUpdateType.Snapshot : SocketUpdateType.Update)
+                    .WithDataTimestamp(PhemexExchange.ConvertNanosecondsToDateTime(data.TimestampNs), GetTimeOffset())), false, unsubscribeParameters: []);
+            // Unsubscribe removes every book on a connection. CEN excludes a connection already
+            // carrying this topic, so each book can be released without interrupting another book.
+            subscription.Topic = "orderbook_p";
+            return SubscribeAsync(BaseAddress, subscription, ct);
+        }
 
         /// <inheritdoc />
         public async Task<WebSocketResult<UpdateSubscription>> SubscribeToTradeUpdatesAsync(string symbol, Action<DataEvent<PhemexFutureTradeUpdate>> onMessage, CancellationToken ct = default)

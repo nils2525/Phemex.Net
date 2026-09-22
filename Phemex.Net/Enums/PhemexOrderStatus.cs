@@ -10,11 +10,14 @@ namespace Phemex.Net.Enums
     [JsonConverter(typeof(EnumConverter<PhemexOrderStatus>))]
     public enum PhemexOrderStatus
     {
+        /// <summary>[<c>Init</c>] Order accepted for processing.</summary>
+        [Map("Init")]
+        Init = 100,
         /// <summary>
         /// ["<c>Created</c>"] Created
         /// </summary>
         [Map("Created")]
-        Created,
+        Created = 0,
         /// <summary>
         /// ["<c>Untriggered</c>"] Conditional order waiting to be triggered
         /// </summary>

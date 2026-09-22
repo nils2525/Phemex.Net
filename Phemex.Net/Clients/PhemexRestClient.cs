@@ -2,6 +2,8 @@ using CryptoExchange.Net.Clients;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Phemex.Net.Clients.SpotApi;
+using Phemex.Net.Clients.FuturesApi;
+using Phemex.Net.Interfaces.Clients.FuturesApi;
 using Phemex.Net.Interfaces.Clients;
 using Phemex.Net.Interfaces.Clients.SpotApi;
 using Phemex.Net.Objects.Options;
@@ -17,6 +19,9 @@ namespace Phemex.Net.Clients
 
         /// <inheritdoc />
         public IPhemexRestClientSpotApi SpotApi { get; }
+
+        /// <inheritdoc />
+        public IPhemexRestClientFuturesApi FuturesApi { get; }
 
         #endregion
 
@@ -42,6 +47,7 @@ namespace Phemex.Net.Clients
             Initialize(options.Value);
 
             SpotApi = AddApiClient(new PhemexRestClientSpotApi(this, loggerFactory, httpClient, options.Value));
+            FuturesApi = new PhemexRestClientFuturesApi((PhemexRestClientSpotApi)SpotApi);
         }
 
         #endregion
