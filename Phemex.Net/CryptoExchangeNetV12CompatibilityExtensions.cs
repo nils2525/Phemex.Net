@@ -1,6 +1,9 @@
 using CryptoExchange.Net.RateLimiting.Interfaces;
 using System;
 using System.Net.Http;
+#if NET5_0_OR_GREATER
+using System.Diagnostics.CodeAnalysis;
+#endif
 
 namespace CryptoExchange.Net.Objects
 {
@@ -18,15 +21,30 @@ namespace CryptoExchange.Net.Objects
         public static void AddOptional(this Parameters parameters, string key, decimal? value)
             => parameters.Add(key, value);
 
-        public static void AddOptional<T>(this Parameters parameters, string key, T? value)
+        /// <summary>Adds an optional enum while preserving its fields for CEN serialization.</summary>
+        public static void AddOptional<
+#if NET5_0_OR_GREATER
+            [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor | DynamicallyAccessedMemberTypes.PublicFields)]
+#endif
+            T>(this Parameters parameters, string key, T? value)
             where T : struct, Enum
             => parameters.Add(key, value);
 
-        public static void AddOptionalEnum<T>(this Parameters parameters, string key, T? value)
+        /// <summary>Adds an optional enum while preserving its fields for CEN serialization.</summary>
+        public static void AddOptionalEnum<
+#if NET5_0_OR_GREATER
+            [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor | DynamicallyAccessedMemberTypes.PublicFields)]
+#endif
+            T>(this Parameters parameters, string key, T? value)
             where T : struct, Enum
             => parameters.Add(key, value);
 
-        public static void AddEnum<T>(this Parameters parameters, string key, T value)
+        /// <summary>Adds an enum while preserving its fields for CEN serialization.</summary>
+        public static void AddEnum<
+#if NET5_0_OR_GREATER
+            [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor | DynamicallyAccessedMemberTypes.PublicFields)]
+#endif
+            T>(this Parameters parameters, string key, T value)
             where T : struct, Enum
             => parameters.Add(key, value);
 
