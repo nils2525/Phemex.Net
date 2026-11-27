@@ -9,6 +9,7 @@ using CryptoExchange.Net.Objects.Errors;
 using CryptoExchange.Net.Objects.Sockets;
 using CryptoExchange.Net.SharedApis;
 using CryptoExchange.Net.Sockets.Default;
+using CryptoExchange.Net.Sockets.Interfaces;
 using Microsoft.Extensions.Logging;
 using Phemex.Net.Clients.MessageHandlers;
 using Phemex.Net.Enums;
@@ -90,8 +91,8 @@ namespace Phemex.Net.Clients.FuturesApi
         /// <inheritdoc />
         protected override IMessageSerializer CreateSerializer() => new SystemTextJsonMessageSerializer(PhemexExchange._serializerContext);
         /// <inheritdoc />
-        protected override bool ConnectionCanBeUsedFor(SocketConnection connection, string address, bool authenticated, string? topic = null)
-            => base.ConnectionCanBeUsedFor(connection, address, authenticated, topic)
+        protected override bool ConnectionCanBeUsedFor(SocketConnection connection, string address, bool authenticated, IMessageProcessor? processor, string? topic = null)
+            => base.ConnectionCanBeUsedFor(connection, address, authenticated, processor, topic)
                 && (topic != "orderbook_p" || !connection.Topics.Contains(topic));
 
         /// <inheritdoc />
